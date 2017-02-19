@@ -1,0 +1,286 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish Article
+% LaTeX Template
+% Version 2.1 (1/10/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) 
+% With extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[fleqn,10pt]{UICArticle} % Document font size and equations flushed left
+\usepackage[spanish]{babel} % Specify a different language here - english by default
+\usepackage{listings}
+\usepackage{dirtytalk}
+
+%----------------------------------------------------------------------------------------
+%	COLUMNS
+%----------------------------------------------------------------------------------------
+
+\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+
+%----------------------------------------------------------------------------------------
+%	COLORS
+%----------------------------------------------------------------------------------------
+
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+\JournalInfo{Universitat Internacional de Catalunya} % Journal information
+\Archive{Trabajo Fin de Grado, Medicina, ~2016-2017} % Additional notes (e.g. copyright, DOI, review/research article)
+\PaperTitle{El uso de conectomas basados en particiones estructuro-funcionales del cerebro para la clasificación automatizada de subtipos de esclerosis múltiple.} % Article title
+\Authors{Gabriel de Maeztu\textsuperscript{1}*} % Authors
+\affiliation{\textsuperscript{1}\textit{Facultad de Medicina, Universitat Internacional de Catalunya, Barcelona, Spain}} % Author affiliation
+%\affiliation{\textsuperscript{2}\textit{Facultad de Matemáticas, Universidad de Barcelona, Barcelona, Spain}} % Author affiliation
+\affiliation{*\textbf{Datos de contacto}: gabriel.mp@uic.es} % Corresponding author
+
+\Keywords{
+Magnetic Resonance Imaging [D008279] ---
+Brain Mapping [D001931] ---
+Connectomics [D063132] ---
+Multiple Sclerosis [D009103] ---
+Humans [D006801]
+} % Keywords - if you don't want any simply remove all the text between the curly brackets
+\newcommand{\keywordname}{Palabras clave} % Defines the keywords heading name
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\Abstract{
+La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), incluso en las zonas que parecen normales en la resonancia magnética nuclear (RMN). En los últimos años se ha demostrado que gracias al uso de conectomas, se pueden detectar lesiones en sustancia blanca de apariencia radiológica normal. Actualmente los conectomas se generan a partir de parcelaciones anatómicas en base a la anatomía del cráneo. El objetivo de este estudio es comparar el mismo método de clasificación los subtipos de EM pero con conectomas basados en la parcelación estructuro-funcional del cerebro. Para ello se realizará un análisis observacional retrospectivo de casos-control utilizando RMN de bases de datos de acceso libre de pacientes con EM y que tengan un diagnóstico clínico según los criterios de McDonald.
+~}
+% TODO: Mejorar abstract
+% quitar toda la parte de como se generan y añadir la parte de rehacer comparando con otros datos
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Makes all text pages the same height
+\flushbottom 
+
+% Print the title and abstract box
+\maketitle
+
+% Print the contents section
+\tableofcontents
+
+% Removes page numbering from the first page
+\thispagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introducción}
+
+\subsection{Objetivo}
+
+El objetivo principal de este estudio es comparar el método de clasificación automatizada de pacientes con esclerosis múltiple realizado realizado por Kocevar et al.\cite{Kocevar2016} a una variante del mismo método en el que se utilizan particiones anatomico-funcionales del cerebro para generar los modelos de conexiones neuronales.
+% TODO; Como cojones comparo esto¿? :/
+
+
+\subsection{Esclerosis múltiple}
+
+La esclerosis múltiple (EM) es una enfermedad neurodegenerativa crónica autoinmune y es la causa más común de discapacidad en el adulto joven \cite{Polman2011}. Afecta a la mielina de las neuronas del sistema nervioso produciendo una desmielinización e inflamación que son consideradas la base de la patología. Por causas desconocidas, macrófagos y linfocitos pueden cruzar las barreras hematoencefálicas de estos pacientes y comenzar una reacción autoinmune.
+
+Actualmente, la patología se clasifica en varios fenotipos según la clasificación revisada de Lublin et al\cite{Lublin2014}.
+% TODO: poner las clasificaciones del articulo
+ Se clasifica en benignas (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP). El diagnóstico de estos fenotipos se lleva a cabo a través de diferentes escalas y de imágenes de resonancia magnética nuclear (RMN). Destaca entre las escalas la de McDonalds et al \cite{Polman20112}, basada criterios que son estrictamente clínicos y la mas frecuentemente utilizada,
+
+% TODO: Añadir/mejorar mas escalas.
+
+Se trata de una enfermedad con una alta prevalencia en la población, siendo  la prevalencia media de españa 45 casos por cada 100.000 habitantes.
+
+La neurodegeneración secundaria a las lesiones provocadas por las placas de la EM es a día de hoy difícil de constatar. La pobre correlación entre la medición de lesiones visibles y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM”. Los estudios histopatológicos y de RMN han demostrado un daño de la materia blanca (MB) en las primeras etapas de la EM más allá de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}.
+
+\subsection{Resonancia magnética nuclear}
+El avance de la tecnología ha traído consigo la creación de nuevas herramientas a partir de los datos obtenidos en la RMN. Estas herramientas han permitido detectar y cuantificar lesiones de la EM no visibles en T2 aparentemente y correlacionarlas directamente con el daño histopatológico \cite{Beer2016}.
+
+La RMN, captura voxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional, aprovechando que los núcleos atómicos resuenan a una frecuencia directamente proporcional a la fuerza de un campo magnético ejercido. Ello permite determinar valores en cada voxel, creando una representación tridimensional de las estructuras anatómicas a estudio.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\linewidth]{mri}
+	\caption{Representación visual de un corte de RMN}
+	\label{fig:voxeles}
+\end{figure}
+
+Estos voxeles se representan en una matriz tridimensional de tensores (vectores multidimensionales), que puede ser analizada. Del análisis de estas salen los conectomas.
+
+\subsection{Conectomas}
+Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones en una matriz de 3d permite recrear las conexiones la MB.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\linewidth]{connectome}
+	\caption{Conectoma de las conexiones neuronales}
+	\label{fig:connectome}
+\end{figure}
+
+
+% TODO incluir imagen que permita entender la direccionalidad en los voxeles 
+
+Clásicamente el cerebro se ha dividió en parcelaciones para su estudio basándose en la anatomía del cráneo (frontal, temporal, parietal, occipital), o mas tarde en diferentes áreas (de Brodmann) en base a su citoarquitectura de las neuronas. Estos modelo no responde a una estructuración del cerebro en base de sus funciones. Gracias a las RMN y a la medición del flujo arterial cerebral que esta permite hacer, se han podido desarrollar particiones basándose en las funciones del cerebro (fMRI) \cite{Ogawa1990}.
+
+En 2015, Diez et al \cite{Diez2015} utilizaron los conectomas anatómicos y las particiones de fMRI \cite{Heller2006} para proponer un modelo de partición cerebral basado en las conexiones físicas entre áreas funcionales, creando 22 particiones estructuro-funcionales. 
+% TODO: El uso de estas particiones ha demostrado una mayor correlación entre la clínica y la RMN ??¿
+
+\subsection{Análisis de grafos}
+
+% TODO añadir referencia
+
+Para estudiar la disfunción neurológica, es de gran interés tratar el cerebro como una red. Las redes han demostrado un potencial increíble para estudiar sistemas biológicos complejos, incluyendo el cerebro, y están comenzando a revelar principios fundamentales de la arquitectura y la función del cerebro. El lenguaje matemático que describe y cuantifica las redes se llama teoría de grafos.
+
+\vspace{3mm} 
+Los grafos constan de:
+\begin{enumerate}[noitemsep]
+\item \textbf{Vértices (nodos):} Representan las regiones cerebrales de interés.
+\item \textbf{Enlaces (conexiones):} Estos representan la conectividad entre las regiones del cerebro.
+\end{enumerate}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\linewidth]{graph}
+	\caption{Representación de un grafo simple}
+	\label{fig:graph}
+\end{figure}
+
+La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado en los datos cerebrales está abriendo nuevas posibilidades para el diagnóstico y pronóstico de trastornos neurológicos porque estas redes se ven afectadas durante la enfermedad. Aunque los grafos ofrecen un gran potencial para caracterizar las enfermedades, hoy en día no son una herramienta reconocida en la práctica clínica.
+
+
+\subsection{Aprendizaje automatizado}
+
+Se define como aprendizaje automatizado cuando un programa es capaz de aprender de la experiencia respecto a una tarea si el rendimiento de esta tarea mejora cuando el programa dispone de mas experiencia \cite{Friedman1997}.
+
+La experiencia se considera que son los datos de entrada, en este caso serían los grafos generados previamente a partir de los conectomas junto con la etiqueta de la clasificación de EM. Tras unos datos iniciales que obtuviera este algoritmo, este sería capaz de clasificar una RMN no vista antes a una de las categorías previamente introducidas. A mayor la cantidad de imágenes mejor realizará la tarea de clasificación.
+
+Las máquinas de vectores de soporte (SVM), son modelos de aprendizaje supervisado que analizan los datos utilizados para la clasificación de estos.
+
+%%TODO Esto es importante porque:
+%Mejor class == mejor tto, mejor pronostico
+%Mejor medición del daño, mejor medición de la efectividad de un tto.
+
+ 
+
+%------------------------------------------------
+\section{Métodos}
+
+\subsection{Diseño}
+Este estudio constituye un estudio comparativo de las múltiples formas metodológicas de realizar una clasificación automatizada de los pacientes de EM. Para ello se reutilizan los datos del estudio previo realizado por Kocevar et al. \cite{Kocevar2016} con pacientes casos y controles.
+
+Este método de clasificación ha demostrado ser util para la correcta clasificación de los pacientes con EM. Desde el punto de vista metodológico, el estudio de Kocevar et al. \cite{Kocevar2016} puede sufrir varias limitaciones. La primera consiste en la elección arbitraria del método de parcelación para la definición de los nodos de los grafos. De hecho, los parámetros de la red están influenciados por la el número de nodos de la red \cite{Zalesky2010}. Esta carencia es la motivación de este estudio, el cual se realiza una comparación del mismo método de clasificación pero con el método de parcelación basado en las parcelaciones estructuro-funcionales.
+
+\subsection{Sujetos}
+Las fuentes principales de los datos son un grupo de casos y controles que fueron reclutados de la clínica de EM del Hospital Neurológico de Lyon. 67 pacientes con EM (24 RR, 24 PP, 17 SP y 12 CIS) (29 hombres, 48 mujeres; Edad 38,3 años, rango 21,5-48,7). Ademas se incluyeron 26 sujetos sanos de control (HC), con edad y sexo acompañados de los pacientes con EM (9 hombres, 15 mujeres, con una edad media de 35,7 años, rango 21,6-56,5). El diagnóstico y el curso de la enfermedad se establecieron de acuerdo con los criterios de McDonald's \cite{Polman2011}. La discapacidad se evaluó con la escala de estado de discapacidad extendida (mediana EDSS 4, rango 0-7). Todos los pacientes disponen de al menos una adquisición por RMN de 1.5T en secuencias: T1 3d sagital y DTI 2d Spin echo axial.
+
+\begin{table}[hbt]
+\caption{Datos demográficos}
+\centering
+\begin{tabular}{llllll}
+\toprule
+\multicolumn{6}{l}{} \\
+     & n   & H/M    & Edad  & D.E.  & EDSS  \\
+HC   & 24  & 15/9   & 35.7  & -     & -     \\
+CIS  & 12  & 7/5    & 33.5  & 2.8   & 1.0   \\
+RR   & 24  & 20/4   & 35.1  & 6.8   & 2.5   \\
+SP   & 24  & 10/14  & 42.3  & 13.8  & 5.0   \\
+PP   & 17  & 11/6   & 40.9  & 6.7   & 4.0   \\
+\bottomrule
+\end{tabular}
+\label{tab:label}
+\end{table}
+
+\subsection{Variables intermedias}
+Se pueden estimar varias métricas para medir las propiedades de grafo generado a partir del cerebral, para ello nos basaremos en aquellas propuestas por Rubinov et al.\cite{Rubinov2010}. Brevemente, se tratan de métricas derivadas de cada una de estas características, estimando un valor que posteriormente será utilizado para la clasificación.
+
+\begin{enumerate}[noitemsep]
+\item \textbf{Segregación:} Se refiere a las áreas del cerebro especializadas para realizar diferentes tareas de forma separada. Grupo de nodos densamente interconectados.
+\item \textbf{Integración:} Definde la habilidad para combinar de una forma rápida y eficaz la información de las regiones especializadas.
+\item \textbf{Centralidad:} Mide la importancia de los nodos en la red.
+\item \textbf{Resistencia:} Calcula la vulnerabilidad de la red.
+\item \textbf{Motif:} Tiene en cuenta la frecuencia de aparición de ciertos patrones.
+\end{enumerate}
+
+En este caso se medirán la densidad (D), asortividad (r), eficiencia (E), transitividad (T), modularidad (Q) y longitud de la trayectoria característica (CPL) tal y como se realizó en el estudio de Kocevar et al.\cite{Kocevar2016}.
+
+\subsection{Variables finales}
+% TODO: Decidir que varibles finales comparar; f-valor etc
+
+
+\subsection{Instrumentos de medición}
+Para la adquisición de RMN se utilizó sistema Siemens Sonata de 1,5T utilizando una bobina de cabeza de 8 canales. El protocolo RMN de adquisición consistió en una secuencia sagital 3D T1 (1 x 1 x 1mm3, TE / TR = 4/2000ms) y una secuencia axial DTI de spin-echo 2D (TE / TR = 86 / 6900ms, 2 x 24 direcciones de difusión en gradiente, b = 1000, resolución espacial de 2,5 x 2,5 x 2,5 mm3) orientada en el plano AC/PC.
+
+Para el diagnóstico y la clasificación se utilizaron los criterios revisados de McDonald's \cite{Polman2011}, unos criterios basados en la clínica de los pacientes así como de herramientas como la RMN. Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. La escala EDSS, es numérica y discreta del 0 al 10.
+
+\subsection{Plan de análisis}
+
+\begin{enumerate}[noitemsep]
+\item Realizar conectomas
+\item Crear grafos en base a part. anat-estruc
+\item Obtener propiedadades de los grafos
+\item Calcular p's entre grupos (HP, PP, SP, CIS) (CASE vs CONTROL) % SOBRA
+\item Clasificar pacientes con SVM
+\item medida del rendimiento de la clasificación: vpp , sensibilidad y valor F
+\item Realizar los mismo con el nuevas particiones
+\item comparar ambos modelos
+\end{enumerate}
+
+%------------------------------------------------
+\section{Resultados}
+¿?
+
+%------------------------------------------------
+\section{Discusión}
+
+\subsection{Limitaciones}
+
+\begin{list}{-}{spacing}
+\item El bajo tesla --> ruido en imagen
+\item La elección de un tipo de partici
+\end{list}
+
+%------------------------------------------------
+\section{Conclusión}
+
+
+%------------------------------------------------
+\phantomsection
+\section*{Agradecimientos}
+\addcontentsline{toc}{section}{Agradecimientos}
+
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\phantomsection
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
