@@ -1,20 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Stylish Article
-% LaTeX Template
-% Version 2.1 (1/10/15)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Mathias Legrand (legrand.mathias@gmail.com) 
-% With extensive modifications by:
-% Vel (vel@latextemplates.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
@@ -54,8 +37,7 @@
 \Archive{Trabajo Fin de Grado, Medicina, ~2016-2017} % Additional notes (e.g. copyright, DOI, review/research article)
 \PaperTitle{El uso de conectomas basados en particiones estructuro-funcionales del cerebro para la clasificación automatizada de subtipos de esclerosis múltiple.} % Article title
 \Authors{Gabriel de Maeztu\textsuperscript{1}*} % Authors
-\affiliation{\textsuperscript{1}\textit{Facultad de Medicina, Universitat Internacional de Catalunya, Barcelona, Spain}} % Author affiliation
-%\affiliation{\textsuperscript{2}\textit{Facultad de Matemáticas, Universidad de Barcelona, Barcelona, Spain}} % Author affiliation
+\affiliation{\textsuperscript{1}\textit{Facultad de Medicina, Universitat Internacional de Catalunya, Barcelona, Spain}} 
 \affiliation{*\textbf{Datos de contacto}: gabriel.mp@uic.es} % Corresponding author
 
 \Keywords{
@@ -100,28 +82,21 @@ La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), inc
 
 \subsection{Objetivo}
 
-El objetivo principal de este estudio es comparar el método de clasificación automatizada de pacientes con esclerosis múltiple realizado realizado por Kocevar et al.\cite{Kocevar2016} a una variante del mismo método en el que se utilizan particiones anatomico-funcionales del cerebro para generar los modelos de conexiones neuronales.
-% TODO; Como cojones comparo esto¿? :/
+El objetivo principal de este estudio es comparar la especificidad y la sensibilidad del método de clasificación propuesto por Kocevar et al.\cite{Kocevar2016} con una variante del método. Este método clasifica individuos en los subtipos de esclerosis múltiple (EM) o paciente sano, basandose en el análisis de la conectividad cerebral obtenida a partir de imágenes de  resonancias magnéticas nucleares (RMN) cerebrales. El método propuesto  utiliza las particiones anatómico-funcionales del cerebro propuestas por Diez et al.\cite{Diez2015} para calcular la conectividad del cerebro en vez de particiones aleatorias.
+% TODO: Comparar especificidad y sensibilidad
 
 
 \subsection{Esclerosis múltiple}
 
-La esclerosis múltiple (EM) es una enfermedad neurodegenerativa crónica autoinmune y es la causa más común de discapacidad en el adulto joven \cite{Polman2011}. Afecta a la mielina de las neuronas del sistema nervioso produciendo una desmielinización e inflamación que son consideradas la base de la patología. Por causas desconocidas, macrófagos y linfocitos pueden cruzar las barreras hematoencefálicas de estos pacientes y comenzar una reacción autoinmune.
+La EM es una enfermedad neurodegenerativa crónica autoinmune y es la causa más común de discapacidad en el adulto joven \cite{Polman2011}. Afecta a la mielina de las neuronas del sistema nervioso produciendo una desmielinización e inflamación que son consideradas la base de la patología.
 
-Actualmente, la patología se clasifica en varios fenotipos según la clasificación revisada de Lublin et al\cite{Lublin2014}.
-% TODO: poner las clasificaciones del articulo
- Se clasifica en benignas (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP). El diagnóstico de estos fenotipos se lleva a cabo a través de diferentes escalas y de imágenes de resonancia magnética nuclear (RMN). Destaca entre las escalas la de McDonalds et al \cite{Polman20112}, basada criterios que son estrictamente clínicos y la mas frecuentemente utilizada,
+Actualmente, la patología se clasifica en clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP); según la clasificación revisada de Lublin et al\cite{Lublin2014}. La determinación de estos fenotipos se lleva a cabo a través de diferentes escalas y de imágenes de RMN siendo los criterios revisados de McDonalds \cite{Polman20112} los mas frecuentemente utilizados.
 
-% TODO: Añadir/mejorar mas escalas.
-
-Se trata de una enfermedad con una alta prevalencia en la población, siendo  la prevalencia media de españa 45 casos por cada 100.000 habitantes.
-
-La neurodegeneración secundaria a las lesiones provocadas por las placas de la EM es a día de hoy difícil de constatar. La pobre correlación entre la medición de lesiones visibles y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM”. Los estudios histopatológicos y de RMN han demostrado un daño de la materia blanca (MB) en las primeras etapas de la EM más allá de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}.
+La neurodegeneración secundaria a las lesiones provocadas por las placas de la EM es a día de hoy difícil de constatar y cuantificar. La pobre correlación entre la medición de las lesiones visibles y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM”. Los estudios histopatológicos y de RMN han demostrado la existencia de daño en la materia blanca (MB) durante las primeras etapas de la EM más allá de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}.
 
 \subsection{Resonancia magnética nuclear}
-El avance de la tecnología ha traído consigo la creación de nuevas herramientas a partir de los datos obtenidos en la RMN. Estas herramientas han permitido detectar y cuantificar lesiones de la EM no visibles en T2 aparentemente y correlacionarlas directamente con el daño histopatológico \cite{Beer2016}.
 
-La RMN, captura voxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional, aprovechando que los núcleos atómicos resuenan a una frecuencia directamente proporcional a la fuerza de un campo magnético ejercido. Ello permite determinar valores en cada voxel, creando una representación tridimensional de las estructuras anatómicas a estudio.
+El análisis sistematizado de la RMN ha permitido detectar y cuantificar lesiones de la EM aparentemente no visibles para los radiólogos y correlacionarlas directamente con el daño histopatológico \cite{Beer2016}.
 
 \begin{figure}[ht]
 	\centering
@@ -130,27 +105,30 @@ La RMN, captura voxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un
 	\label{fig:voxeles}
 \end{figure}
 
-Estos voxeles se representan en una matriz tridimensional de tensores (vectores multidimensionales), que puede ser analizada. Del análisis de estas salen los conectomas.
+Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional. Estos vóxeles son parte en una matriz tridimensional, que puede ser analizada de manera sistemática. Cuando se captura la Del análisis de estas salen los conectomas.
+
+
+
+
 
 \subsection{Conectomas}
-Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones en una matriz de 3d permite recrear las conexiones la MB.
+Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones permite recrear las conexiones de la MB.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{connectome}
-	\caption{Conectoma de las conexiones neuronales}
+	\caption{Tractografía de las conexiones neuronales}
 	\label{fig:connectome}
 \end{figure}
 
+Para estudiar estas conexiones es necesario reconocer el origen y destino de estos tractos. Clásicamente se han utilizado como origenes las parcelaciones anatómicas del cráneo o las parcelaciones basadas en la citoarquitectura de las neuronas (áreas de Brodmann). Estos modelos no responden a una estructuración del cerebro en base de sus funciones pero gracias a las RMN y a la medición del flujo arterial cerebral que esta permite hacer, se han podido desarrollar modelos de particiones basándose en las funciones del cerebro (fMRI) \cite{Ogawa1990}.
 
-% TODO incluir imagen que permita entender la direccionalidad en los voxeles 
-
-Clásicamente el cerebro se ha dividió en parcelaciones para su estudio basándose en la anatomía del cráneo (frontal, temporal, parietal, occipital), o mas tarde en diferentes áreas (de Brodmann) en base a su citoarquitectura de las neuronas. Estos modelo no responde a una estructuración del cerebro en base de sus funciones. Gracias a las RMN y a la medición del flujo arterial cerebral que esta permite hacer, se han podido desarrollar particiones basándose en las funciones del cerebro (fMRI) \cite{Ogawa1990}.
-
-En 2015, Diez et al \cite{Diez2015} utilizaron los conectomas anatómicos y las particiones de fMRI \cite{Heller2006} para proponer un modelo de partición cerebral basado en las conexiones físicas entre áreas funcionales, creando 22 particiones estructuro-funcionales. 
+En 2015, Diez et al \cite{Diez2015} propusieron un modelo de particiones cerebrales teniendo en cuenta las conexiones físicas de los conectomas entre áreas funcionales, creando 22 particiones estructuro-funcionales. 
 % TODO: El uso de estas particiones ha demostrado una mayor correlación entre la clínica y la RMN ??¿
 
-\subsection{Análisis de grafos}
+particiones funcionales obtenidas por fMRI \cite{Heller2006}
+
+\subsection{Análisis de grafos (redes)}
 
 % TODO añadir referencia
 
@@ -252,7 +230,7 @@ Para el diagnóstico y la clasificación se utilizaron los criterios revisados d
 
 %------------------------------------------------
 \section{Resultados}
-¿?
+Los esperados si se llevara a cabo.
 
 %------------------------------------------------
 \section{Discusión}

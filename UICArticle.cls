@@ -1,10 +1,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BMJ Like article
-% Class File
-% Version 2.2 (05/01/17)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
 %
 % Author:
 % Gabriel de Maeztu <gabriel.maeztu@gmail.com>
@@ -13,6 +7,11 @@
 % Mathias Legrand (legrand.mathias@gmail.com)
 % With extensive modifications by:
 % Vel (vel@latextemplates.com)
+%
+% This file is based on 
+% BMJ Like article
+% Class File
+% Version 2.2 (05/01/17)
 %
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
