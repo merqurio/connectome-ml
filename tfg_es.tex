@@ -92,7 +92,9 @@ La EM es una enfermedad neurodegenerativa crónica autoinmune y es la causa más
 
 Actualmente, la patología se clasifica en diferentes fenotipos: clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP); según la clasificación revisada de Lublin et al\cite{Lublin2014}. La determinación de estos fenotipos se lleva a cabo a través de diferentes escalas e imágenes de RMN según los criterios revisados de McDonalds\cite{Polman20112}.
 
-La neurodegeneración secundaria a las lesiones provocadas por las placas de la EM es a día de hoy difícil de constatar y cuantificar y por ello difícil de correlacionar con los fenotipos descritos. La pobre correlación entre la medición de las lesiones visibles y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM”. Los estudios histopatológicos y de RMN han demostrado la existencia de daño en la materia blanca (MB) durante las primeras etapas de la EM más allá de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}.
+La neurodegeneración secundaria a las lesiones provocadas por las placas de la EM es a día de hoy difícil de constatar y cuantificar y por ello difícil de correlacionar con los fenotipos descritos. La pobre correlación entre la medición de las lesiones visibles y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM”. Esto urge a la búsqueda de métodos complementarios para la detección y clasificación de posibles pacientes con EM.
+
+Los estudios histopatológicos y de RMN han demostrado la existencia de daño en la materia blanca (MB) durante las primeras etapas de la EM más allá de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}. Es por ello que el análisis sistematizado de estas imágenes es una posible herramienta diagnóstica.
 
 \subsection{Resonancia magnética nuclear}
 
@@ -117,7 +119,7 @@ Los conectomas son recreaciones de las conexiones neuronales creadas en base a l
 	\label{fig:connectome}
 \end{figure}
 
-Para estudiar estas conexiones es de gran interés tratar el cerebro como una red (grafo) y siendo necesario conocer el origen y destino de estos tractos. Para ello es necesario dividir el cerebro en áreas. Clásicamente se han utilizado las parcelaciones basadas en la anatómia del cráneo o las parcelaciones basadas en la citoarquitectura de las neuronas (áreas de Brodmann).
+Para estudiar estas conexiones es de gran interés tratar el cerebro como una red (grafo) siendo necesario conocer el origen y destino de estos tractos. Para ello es necesario dividir el cerebro en áreas. Clásicamente se han utilizado las parcelaciones basadas en la anatómia del cráneo o las parcelaciones basadas en la citoarquitectura de las neuronas (áreas de Brodmann).
 
 Estos modelos no responden a una estructuración del cerebro en base a sus funciones, pero gracias a la RMN y a la medición del flujo arterial cerebral que esta permite hacer en las secuencias BOLD \cite{Ogawa1990}, se han podido desarrollar modelos de particiones basándose en la funcionalidad del cerebro \cite{Heller2006}.
 
@@ -145,18 +147,18 @@ Los grafos constan de:
 	\label{fig:graph}
 \end{figure}
 
-El procesamiento de las RMN permite obtener un grafo, en el que se puede realizar una medición objetiva y cuantificable de las redes neuronales. A diferencia de el trabajao de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
+El procesamiento de las RMN permite obtener un grafo, en el que se puede realizar una medición objetiva y cuantificable de las redes neuronales. A diferencia de el trabajo de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
 
 
 \subsection{Aprendizaje automatizado}
 
 El aprendizaje automatizado es la capacidad de un algoritmo de aprender de la experiencia acumulada al realizar una tarea \cite{Friedman1997}.
 
-La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico y pronóstico de distintos trastornos neurológicos dado que estas redes se ven afectadas durante la enfermedad. 
+%La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico y pronóstico de distintos trastornos neurológicos dado que estas redes se ven afectadas durante la enfermedad. 
 
 La experiencia se considera que son los datos aportados al algoritmo, en este caso serían los conectomas y el diagnóstico. La tarea es dar un diagnóstico a partir del análisis del conectoma. Tras introducir unos datos iniciales, es decir el conectoma y el diagnóstico de muchos pacientes, el algoritmo será capaz de dar un diagnóstico a partir del conectoma en base la experiencia previamente adquirida.
 
-Las máquinas de vectores de soporte (SVM), es un algoritmo de aprendizaje supervisado que analizan los datos utilizados para la clasificación de estos; y el algortimo utilizado por Kocevar et al.\cite{Kocevar2016}
+En este caso el algoritmo utilizado Las máquinas de vectores de soporte (SVM), es un algoritmo de aprendizaje supervisado que analizan los datos utilizados para la clasificación de estos; y el algortimo utilizado por Kocevar et al.\cite{Kocevar2016}
 
 %%TODO Esto es importante porque:
 %Mejor class == mejor tto, mejor pronostico
