@@ -95,12 +95,19 @@ El objetivo principal de este estudio es comparar la especificidad y la sensibil
 
 \subsection{Hipótesis}
 
-%TODO: citar redes
-El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma. El uso de particiones calculadas en base a la funcionalidad del cerebro para crear los nodos que determinarán la topología de la red es la hipótesis que este estudio plantea poner a prueba. 
+El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma \cite{Fornito, Zalesky2010}. La hipótesis que este estudio plantea es la mejora de la especificidad y sensibilidad del método haciendo uso de particiones calculadas en base a la estructura y funcionalidad del cerebro para crear los nodos que determinarán la topología de la red. 
 
 \subsection{Fenotipos de la Esclerosis múltiple}
 
 La neurodegeneración secundaria a las lesiones provocadas por la EM es a día de hoy difícil de constatar y cuantificar y por ello difícil de correlacionar con los fenotipos clínicamente descritos. Actualmente, la EM se clasifica en los siguientes fenotipos: clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP); según la clasificación revisada de Lublin et al\cite{Lublin2014}. La determinación de estos fenotipos se lleva a cabo a través de diferentes escalas e imágenes de RMN según los criterios revisados de McDonald\cite{Polman20112}.
+
+%TODO: Cambiar imagen por propia
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=\linewidth]{mri}
+	\caption{Representación visual de un corte de RMN}
+	\label{fig:voxeles}
+\end{figure}
 
 \subsection{Obtención de imagenes}
 
@@ -108,25 +115,15 @@ El procesamiento de imágenes de RMN ha permitido detectar y cuantificar lesione
 
 Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional. Estos vóxeles son parte de una matriz, que puede ser analizada de manera sistemática. Cuando esta matriz es generada utilizando la secuencia de RMN de tensores de difusión (DTI) es posible utilizar algoritmos de tractografía para reconstruir las vías de la MB obteniendo así los conectomas.
 
-%TODO: Cambiar imagen por propia
-\begin{figure}[t]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=\linewidth]{mri}
-	\caption{Representación visual de un corte de RMN}
-	\label{fig:voxeles}
+	\includegraphics[width=\linewidth]{connectome}
+	\caption{Reconstrucción 3D de tractos y selección de las radiación visuales.}
+	\label{fig:connectome}
 \end{figure}
 
 \subsection{Procesamiento de las imágenes}
 Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones permite recrear las conexiones de la MB, asumiendo que estas direcciones vienen determinadas por el agua contenida en los tejidos cerebrales.
-
-
-%TODO: Cambiar tracto por uno propio
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\linewidth]{connectome}
-	\caption{Tractografía de las conexiones neuronales}
-	\label{fig:connectome}
-\end{figure}
 
 Para estudiar estas conexiones es de gran interés tratar el cerebro como una red (grafo) siendo necesario asignar una etiqueta al origen y destino de estos tractos. Para ello, el cerebro se ha de dividir en diferente áreas o parcelaciones, asignando una etiqueta a cada una de ellas. Clásicamente se han utilizado las parcelaciones basadas en la anatómia del cráneo o las parcelaciones basadas en la citoarquitectura de las neuronas (áreas de Brodmann).
 
@@ -155,15 +152,13 @@ Los grafos constan de varios elementos, que aplicados a este caso pueden resumir
 
 El procesamiento de las RMN permite obtener un grafo \{fig.\ref{fig:network}\}, en el que se pueden realizar una mediciones objetivas y cuantificables de las redes neuronales. A diferencia de el trabajo de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
 
-\begin{figure*}[p]
-	\centering
-	\includegraphics[width=\linewidth]{network}
-	\vspace{5mm} 
-	\caption{Grafo de la red neuronal}
-	\label{fig:network}
-\end{figure*}
-
-% TODO: Añadir grafo del cerebro con 22 particiones somewhere
+%\begin{figure*}[b]
+%	\centering
+%	\includegraphics[width=\linewidth]{network}
+%	\vspace{5mm} 
+%	\caption{Grafo basado en las particiones de Destrieux et al.\cite{Destrieux2010}}
+%	\label{fig:network}
+%\end{figure*}
 
 \subsection{Clasificación automatizada de los resultados}
 
@@ -175,16 +170,13 @@ La experiencia se considera que son los datos aportados al algoritmo, en este ca
 %------------------------------------------------
 \section{Material y Métodos}
 
-%TODO: Buscar un lugar para esto
-%Tras capturar RMN de los pacientes con EM, se genera un conectoma, que será analizado como un grafo, obteniendo del grafo unos valores de medición que lo describen matematicamente. Por otra parte los pacientes obtendrán un diagnóstico clínico que será el que sirva de referencia para realizar la clasificación.
-
 \subsection{Diseño}
-Esta propuesta constituye un estudio comparativo de dos metodologías para la clasificación automatizada de los pacientes de EM. Para ello se reutilizarán los datos del estudio previo realizado por Kocevar et al. \cite{Kocevar2016} con casos y controles.
 
-Este método de clasificación ha demostrado ser util para la correcta clasificación de los pacientes con EM. Desde el punto de vista metodológico, el estudio de Kocevar et al. \cite{Kocevar2016} puede sufrir varias limitaciones. La primera consiste en la elección arbitraria del método de parcelación para la definición de los nodos de los grafos. De hecho, los parámetros de la red están influenciados por la el número de nodos de la red \cite{Zalesky2010}. Esta limitación técnica es la que motiva  de este estudio., el cual se realiza una comparación del mismo método de clasificación pero con el método de parcelación basado en las parcelaciones estructuro-funcionales.
+%TODO: Tipo de estudio
+Esta propuesta constituye un estudio descriptivo, analitico comparativo de dos metodologías para la clasificación automatizada de los pacientes de EM. Para ello se reutilizarán los datos del estudio previo realizado por Kocevar et al. \cite{Kocevar2016} con casos y controles.
 
 \subsection{Sujetos}
-Las fuentes principales de los datos son un grupo de casos y controles que fueron reclutados de la clínica de EM del Hospital Neurológico de Lyon. 67 pacientes con EM (24 RR, 24 PP, 17 SP y 12 CIS) (29 hombres, 48 mujeres; Edad 38,3 años, rango 21,5-48,7). Ademas se incluyeron 26 sujetos sanos de control (HC), con edad y sexo acompañados de los pacientes con EM (9 hombres, 15 mujeres, con una edad media de 35,7 años, rango 21,6-56,5). El diagnóstico y el curso de la enfermedad se establecieron de acuerdo con los criterios de McDonald's \cite{Polman2011}. La discapacidad se evaluó con la escala de estado de discapacidad extendida (mediana EDSS 4, rango 0-7). Todos los pacientes disponen de al menos una adquisición por RMN de 1.5T en secuencias: T1 3d sagital y DTI 2d Spin echo axial.
+La fuente principal de los datos son un grupo de casos y controles que fueron reclutados de la clínica de EM del Hospital Neurológico de Lyon. 67 pacientes con EM (24 RR, 24 PP, 17 SP y 12 CIS) (29 hombres, 48 mujeres; edad media de 38,3 años, rango 21,5-48,7). Ademas se incluyeron 26 sujetos sanos de control (HC), con edad y sexo acompañados de los pacientes con EM (9 hombres, 15 mujeres, con una edad media de 35,7 años, rango 21,6-56,5). El diagnóstico y el curso de la enfermedad se establecieron de acuerdo con los criterios de McDonald's \cite{Polman2011}. La discapacidad se evaluó con la escala de estado de discapacidad extendida (mediana EDSS 4, rango 0-7). Todos los pacientes disponen de al menos una adquisición por RMN de 1.5T en secuencias: T1 3d sagital y DTI 2d Spin echo axial.
 
 \begin{table}[hbt]
 \caption{Datos demográficos}
@@ -220,16 +212,27 @@ En este caso se medirán la densidad (D), asortividad (r), eficiencia (E), trans
 % TODO: Decidir que varibles finales comparar; f-valor etc
 
 
+\begin{enumerate}[noitemsep]
+\item Sensibilidad
+\item Especificidad
+\item VPP, ff-valor y ..
+\end{enumerate}
+
+If both diagnostic tests were performed on each patient, then paired data result and methods that account for the correlated binary outcomes are necessary (McNemar's test).
+
+
+
 \subsection{Instrumentos de medición}
-Para la adquisición de RMN se utilizó sistema Siemens Sonata de 1,5T utilizando una bobina de cabeza de 8 canales. El protocolo RMN de adquisición consistió en una secuencia sagital 3D T1 (1 x 1 x 1mm3, TE / TR = 4/2000ms) y una secuencia axial DTI de spin-echo 2D (TE / TR = 86 / 6900ms, 2 x 24 direcciones de difusión en gradiente, b = 1000, resolución espacial de 2,5 x 2,5 x 2,5 mm3) orientada en el plano AC/PC.
+Para la adquisición de RMN se utilizó sistema Siemens Sonata de {\tt 1,5T} utilizando una bobina de cabeza de 8 canales. El protocolo RMN de adquisición consistió en una secuencia sagital 3D T1 (1 x 1 x 1mm3, TE / TR = 4/2000ms) y una secuencia axial DTI de spin-echo 2D (TE / TR = 86 / 6900ms, 2 x 24 direcciones de difusión en gradiente, b = 1000, resolución espacial de 2,5 x 2,5 x 2,5 mm3) orientada en el plano AC/PC.
 
 Para el diagnóstico y la clasificación se utilizaron los criterios revisados de McDonald's \cite{Polman2011}, unos criterios basados en la clínica de los pacientes así como de herramientas como la RMN. Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. La escala EDSS, es numérica y discreta del 0 al 10.
 
 \subsection{Plan de análisis}
 
+Tras capturar RMN de los pacientes con EM, se genera un conectoma, que será analizado como un grafo, obteniendo del grafo unos valores de medición que lo describen matematicamente. Por otra parte los pacientes obtendrán un diagnóstico clínico que será el que sirva de referencia para realizar la clasificación.
+
 En este caso el algoritmo utilizado máquinas de vectores de soporte (SVM), es un algoritmo de aprendizaje supervisado que analizan los datos utilizados para la clasificación de estos; y el algoritmo utilizado por Kocevar et al.\cite{Kocevar2016}
 
-If both diagnostic tests were performed on each patient, then paired data result and methods that account for the correlated binary outcomes are necessary (McNemar's test).
 
 \begin{enumerate}[noitemsep]
 \item Realizar conectomas
@@ -257,13 +260,19 @@ La combinación de la teoría de grafos y la naturaleza predictiva del aprendiza
 
 \subsection{Limitaciones}
 
-\begin{list}{-}{spacing}
+\begin{list}{-}
 \item El bajo tesla --> ruido en imagen
 \item La elección de un tipo de particiones
 \item La selección de pacientes
 \item el limitado numero de pacientes
 \item La falta de varios puntos en el tiempo en el mismo paciente para observar la variabilidad
 \end{list}
+
+Desde el punto de vista metodológico, el estudio de Kocevar et al. \cite{Kocevar2016} puede sufrir varias limitaciones. La primera consiste en la elección arbitraria del método de parcelación para la definición de los nodos de los grafos. De hecho, los parámetros de la red están influenciados por la el número de nodos de la red \cite{Zalesky2010}. Esta limitación técnica es la que motiva  de este estudio., el cual se realiza una comparación del mismo método de clasificación pero con el método de parcelación basado en las parcelaciones estructuro-funcionales.
+
+\subsection{Aspectos éticos}
+Paso un comite de etica en su momento, descubrir que se debatio, que mas se podría debatir
+
 
 %------------------------------------------------
 \section{Conclusión}
@@ -274,7 +283,7 @@ Que necesito datos
 \phantomsection
 \section*{Agradecimientos}
 \addcontentsline{toc}{section}{Agradecimientos}
-Gracias a Amaia por su apoyo y largas horas de
+Gracias a Amaia Lasa por su infinita paciencia y ayuda a simplificar ciertos aspectos del trabajo. A Eloi Martinez y Sara Llufriu, por acogerme en el IDIBAPS. Finalmente gracias Álvaro y Javier, por creer en esta aventura y uniros a ella.
 
 
 %----------------------------------------------------------------------------------------
