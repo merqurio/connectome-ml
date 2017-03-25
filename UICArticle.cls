@@ -50,8 +50,8 @@
 	  	  
 \RequirePackage[left=2cm,%
 right=2cm,%
-top=2.25cm,%
-bottom=2.25cm,%
+top=2.5cm,%
+bottom=2.5cm,%
 headheight=11pt,%
 letterpaper]{geometry}%
 				
@@ -188,6 +188,7 @@ justification=raggedright]{caption}
 \newcommand{\Authors}[1]{\def\@Authors{#1}}
 \newcommand{\JournalInfo}[1]{\def\@JournalInfo{#1}}
 \newcommand{\Abstract}[1]{\def\@Abstract{#1}}
+\newcommand{\AbstractEng}[1]{\def\@AbstractEng{#1}}
 \newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 
 % ---------------------------------------------------------------------
@@ -216,13 +217,16 @@ justification=raggedright]{caption}
 				\vskip4pt%
 			\else%
 				\centering%
-				\vskip8pt%
-				\parbox{\textwidth-10\fboxsep-2\fboxrule}{
+				\vskip20pt%
+				\parbox{\textwidth-20\fboxsep-2\fboxrule}{
 					\sffamily\textbf{\abstractname}\\\@Abstract\\[4pt]%
 					\vskip4pt%
+					\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
+					\vskip4pt%
 					\textbf{\keywordname}\\\@Keywords%
+					
 				}
-				\vskip8pt%
+				\vskip20pt%
 			\fi%
 			}%
 		}%

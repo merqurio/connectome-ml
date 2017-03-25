@@ -12,8 +12,7 @@
 %	COLUMNS
 %----------------------------------------------------------------------------------------
 
-\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
-\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+\setlength{\columnsep}{0.75cm} % Distance between the two columns of text
 
 %----------------------------------------------------------------------------------------
 %	COLORS
@@ -48,11 +47,16 @@ Multiple Sclerosis [D009103] ---
 Humans [D006801]
 } % Keywords - if you don't want any simply remove all the text between the curly brackets
 \newcommand{\keywordname}{Palabras clave} % Defines the keywords heading name
+\newcommand{\abstractnameEng}{Abstract – English}
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 \Abstract{
+La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), incluso en las zonas que parecen normales en la resonancia magnética nuclear (RMN). En los últimos años se ha demostrado que gracias al uso de conectomas, se pueden detectar lesiones en sustancia blanca de apariencia radiológica normal. Actualmente los conectomas se generan a partir de parcelaciones anatómicas en base a la anatomía del cráneo. El objetivo de este estudio es comparar el mismo método de clasificación pero con conectomas basados en la parcelación estructuro-funcional del cerebro. Para ello se realizará un estudio observacional retrospectivo de casos-control utilizando RMN de bases de datos de acceso libre de con EM y que tengan un diagnóstico clínico según los criterios de McDonald.
+~}
+
+\AbstractEng{
 La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), incluso en las zonas que parecen normales en la resonancia magnética nuclear (RMN). En los últimos años se ha demostrado que gracias al uso de conectomas, se pueden detectar lesiones en sustancia blanca de apariencia radiológica normal. Actualmente los conectomas se generan a partir de parcelaciones anatómicas en base a la anatomía del cráneo. El objetivo de este estudio es comparar el mismo método de clasificación pero con conectomas basados en la parcelación estructuro-funcional del cerebro. Para ello se realizará un estudio observacional retrospectivo de casos-control utilizando RMN de bases de datos de acceso libre de con EM y que tengan un diagnóstico clínico según los criterios de McDonald.
 ~}
 % TODO: Mejorar abstract
@@ -68,11 +72,12 @@ La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), inc
 % Print the title and abstract box
 \maketitle
 
-% Print the contents section
-\tableofcontents
-
 % Removes page numbering from the first page
 \thispagestyle{empty} 
+\clearpage
+
+% Print the contents section
+\tableofcontents
 
 %----------------------------------------------------------------------------------------
 %	ARTICLE CONTENTS
@@ -102,7 +107,7 @@ El modo en el que se estudia la conectividad de una red está supeditado a la to
 La neurodegeneración secundaria a las lesiones provocadas por la EM es a día de hoy difícil de constatar y cuantificar y por ello difícil de correlacionar con los fenotipos clínicamente descritos. Actualmente, la EM se clasifica en los siguientes fenotipos: clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP); según la clasificación revisada de Lublin et al\cite{Lublin2014}. La determinación de estos fenotipos se lleva a cabo a través de diferentes escalas e imágenes de RMN según los criterios revisados de McDonald\cite{Polman20112}.
 
 %TODO: Cambiar imagen por propia
-\begin{figure}[!t]
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{mri}
 	\caption{Representación visual de un corte de RMN}
@@ -115,12 +120,6 @@ El procesamiento de imágenes de RMN ha permitido detectar y cuantificar lesione
 
 Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional. Estos vóxeles son parte de una matriz, que puede ser analizada de manera sistemática. Cuando esta matriz es generada utilizando la secuencia de RMN de tensores de difusión (DTI) es posible utilizar algoritmos de tractografía para reconstruir las vías de la MB obteniendo así los conectomas.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{connectome}
-	\caption{Reconstrucción 3D de tractos y selección de las radiación visuales.}
-	\label{fig:connectome}
-\end{figure}
 
 \subsection{Procesamiento de las imágenes}
 Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones permite recrear las conexiones de la MB, asumiendo que estas direcciones vienen determinadas por el agua contenida en los tejidos cerebrales.
@@ -130,6 +129,13 @@ Para estudiar estas conexiones es de gran interés tratar el cerebro como una re
 Estos modelos no responden a una estructuración del cerebro en base a sus funciones, pero gracias a la RMN y a la medición del flujo arterial cerebral que esta permite hacer en las secuencias BOLD \cite{Ogawa1990}, se han podido desarrollar modelos de particiones basándose en la funcionalidad del cerebro \cite{Heller2006}.
 
 En 2015, Diez et al \cite{Diez2015} propusieron un modelo de particiones cerebrales teniendo en cuenta tanto las conexiones físicas entre las áreas como las áreas funcionales, creando un modelo del cerebro con 22 particiones estructuro-funcionales previamente no descritas. %TODO: Mejorar la descripción del método
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{connectome}
+	\caption{Reconstrucción 3D de tractos y selección de las radiación visuales.}
+	\label{fig:connectome}
+\end{figure}
 
 \subsection{Análisis de grafos (redes)}
 
@@ -152,13 +158,13 @@ Los grafos constan de varios elementos, que aplicados a este caso pueden resumir
 
 El procesamiento de las RMN permite obtener un grafo \{fig.\ref{fig:network}\}, en el que se pueden realizar una mediciones objetivas y cuantificables de las redes neuronales. A diferencia de el trabajo de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
 
-%\begin{figure*}[b]
-%	\centering
+\begin{figure*}[b]
+	\centering
 %	\includegraphics[width=\linewidth]{network}
-%	\vspace{5mm} 
-%	\caption{Grafo basado en las particiones de Destrieux et al.\cite{Destrieux2010}}
-%	\label{fig:network}
-%\end{figure*}
+	\vspace{5mm} 
+	\caption{Grafo basado en las particiones de Destrieux et al.\cite{Destrieux2010}}
+	\label{fig:network}
+\end{figure*}
 
 \subsection{Clasificación automatizada de los resultados}
 
