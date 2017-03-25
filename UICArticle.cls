@@ -199,7 +199,7 @@ justification=raggedright]{caption}
 \vskip-36pt%
 {\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
 \vskip20pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{25}\selectfont \@PaperTitle\par}%
+{\raggedright\color{color1}\sffamily\bfseries\fontsize{18}{23}\selectfont \@PaperTitle\par}%
 \vskip10pt%
 {\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont  \@Authors\par}%
 \vskip18pt%
@@ -217,16 +217,14 @@ justification=raggedright]{caption}
 				\vskip4pt%
 			\else%
 				\centering%
-				\vskip20pt%
-				\parbox{\textwidth-20\fboxsep-2\fboxrule}{
+				\vskip10pt%
+				\parbox{\textwidth-10\fboxsep-2\fboxrule}{
 					\sffamily\textbf{\abstractname}\\\@Abstract\\[4pt]%
-					\vskip4pt%
 					\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
-					\vskip4pt%
 					\textbf{\keywordname}\\\@Keywords%
 					
 				}
-				\vskip20pt%
+				\vskip10pt%
 			\fi%
 			}%
 		}%
@@ -237,7 +235,7 @@ justification=raggedright]{caption}
 	\endgroup%%
 }%
 }%
-\vskip25pt%
+\vskip10pt%
 }]%
 }
 
