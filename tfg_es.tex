@@ -93,15 +93,6 @@ La pobre correlación entre las lesiones visibles en la resonancia magnética nu
 
 Los estudios histopatológicos y de RMN han demostrado la existencia de daño en la materia blanca (MB) durante las primeras etapas de la EM antes de la aparición de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}. Es por ello que el análisis sistematizado de estas imágenes abre la puerta a nuevas herramientas diagnósticas.
 
-
-\subsection{Objetivo del estudio}
-
-El objetivo principal de este estudio es comparar la especificidad y la sensibilidad de dos métodos de clasificación diagnóstica de pacientes con EM; el método propuesto por Kocevar et al.\cite{Kocevar2016} y una variante del mismo. El método de Kocevar et al.\cite{Kocevar2016} clasifica individuos en los distintos subtipos de EM o paciente sano, basándose en el análisis de la conectividad cerebral obtenida a partir de imágenes de RMN cerebrales. Este análisis de la conectividad, hace uso de conectomas con nodos generados de manera aleatoria. La variente propuesta hace uso de las particiones anatómico-funcionales del cerebro descritas por Diez et al.\cite{Diez2015} para generar los nodos de forma sistemática.
-
-\subsection{Hipótesis}
-
-El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma \cite{Fornito, Zalesky2010}. La hipótesis que este estudio plantea es la mejora de la especificidad y sensibilidad del método haciendo uso de particiones calculadas en base a la estructura y funcionalidad del cerebro para crear los nodos que determinarán la topología de la red. 
-
 \subsection{Fenotipos de la Esclerosis múltiple}
 
 La neurodegeneración secundaria a las lesiones provocadas por la EM es a día de hoy difícil de constatar y cuantificar y por ello difícil de correlacionar con los fenotipos clínicamente descritos. Actualmente, la EM se clasifica en los siguientes fenotipos: clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP); según la clasificación revisada de Lublin et al\cite{Lublin2014}. La determinación de estos fenotipos se lleva a cabo a través de diferentes escalas e imágenes de RMN según los criterios revisados de McDonald\cite{Polman20112}.
@@ -120,6 +111,12 @@ El procesamiento de imágenes de RMN ha permitido detectar y cuantificar lesione
 
 Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional. Estos vóxeles son parte de una matriz, que puede ser analizada de manera sistemática. Cuando esta matriz es generada utilizando la secuencia de RMN de tensores de difusión (DTI) es posible utilizar algoritmos de tractografía para reconstruir las vías de la MB obteniendo así los conectomas.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{connectome}
+	\caption{Reconstrucción 3D de tractos y selección de las radiación visuales.}
+	\label{fig:connectome}
+\end{figure}
 
 \subsection{Procesamiento de las imágenes}
 Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones permite recrear las conexiones de la MB, asumiendo que estas direcciones vienen determinadas por el agua contenida en los tejidos cerebrales.
@@ -130,18 +127,11 @@ Estos modelos no responden a una estructuración del cerebro en base a sus funci
 
 En 2015, Diez et al \cite{Diez2015} propusieron un modelo de particiones cerebrales teniendo en cuenta tanto las conexiones físicas entre las áreas como las áreas funcionales, creando un modelo del cerebro con 22 particiones estructuro-funcionales previamente no descritas. %TODO: Mejorar la descripción del método
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{connectome}
-	\caption{Reconstrucción 3D de tractos y selección de las radiación visuales.}
-	\label{fig:connectome}
-\end{figure}
 
 \subsection{Análisis de grafos (redes)}
 
  El conectoma puede ser estudiado como un grafo (red)\cite{Fornito}. Los grafos han demostrado un gran potencial para estudiar sistemas biológicos complejos, incluyendo el sistema nervioso, y están comenzando a revelar principios fundamentales de la arquitectura y la función del cerebro. El lenguaje matemático que describe y cuantifica estas redes se llama teoría de grafos.
  
-\vspace{5mm} 
 Los grafos constan de varios elementos, que aplicados a este caso pueden resumirse del siguiente modo:
 \begin{enumerate}[noitemsep]
 \item \textbf{Vértices (nodos):} Representan las regiones cerebrales de interés.
@@ -156,7 +146,7 @@ Los grafos constan de varios elementos, que aplicados a este caso pueden resumir
 	\label{fig:graph}
 \end{figure}
 
-El procesamiento de las RMN permite obtener un grafo \{fig.\ref{fig:network}\}, en el que se pueden realizar una mediciones objetivas y cuantificables de las redes neuronales. A diferencia de el trabajo de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
+El procesamiento de las imágenes de RMN permite obtener un grafo \{fig.\ref{fig:network}\}, en el que se pueden realizar mediciones objetivas y cuantificables de las redes neuronales. A diferencia de el trabajo de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
 
 \begin{figure*}[b]
 	\centering
@@ -172,6 +162,15 @@ El aprendizaje automatizado es la capacidad de un algoritmo de aprender de la ex
 
 
 La experiencia se considera que son los datos aportados al algoritmo, en este caso serían los conectomas y el diagnóstico establecido según los criterios de McDonald. La tarea es dar un diagnóstico a partir del análisis del conectoma. Tras introducir unos datos iniciales, es decir, el conectoma y el diagnóstico de muchos pacientes, el algoritmo será capaz de dar un diagnóstico a partir de un conectoma en base la experiencia previamente adquirida
+
+\subsection{Objetivo del estudio}
+
+El objetivo principal de este estudio es comparar la especificidad y la sensibilidad de dos métodos de clasificación diagnóstica de pacientes con EM; el método propuesto por Kocevar et al.\cite{Kocevar2016} y una variante del mismo. El método de Kocevar et al.\cite{Kocevar2016} clasifica individuos en los distintos subtipos de EM o paciente sano, basándose en el análisis de la conectividad cerebral obtenida a partir del procesamiento de imágenes de RMN cerebrales. Este análisis de la conectividad, hace uso de conectomas con nodos generados de manera aleatoria. La variente propuesta hace uso de las particiones anatómico-funcionales del cerebro descritas por Diez et al.\cite{Diez2015} para generar los nodos de forma sistemática.
+
+\subsection{Hipótesis}
+
+El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma \cite{Fornito, Zalesky2010}. La hipótesis que este estudio plantea es la mejora de la especificidad y sensibilidad del método haciendo uso de particiones calculadas en base a la estructura y funcionalidad del cerebro para crear los nodos que determinarán la topología de la red. 
+
 
 %------------------------------------------------
 \section{Material y Métodos}
