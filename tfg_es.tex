@@ -85,31 +85,43 @@ La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), inc
 
 \section{Introducción}
 
-\subsection{La EM y el establecimiento del diagnóstico}
+\subsection{Problema}
 
-La esclerosis múltiple (EM) es una enfermedad neurodegenerativa crónica autoinmune y es la causa más común de discapacidad en el adulto joven \cite{Polman2011}. Afecta a la mielina de las neuronas del sistema nervioso produciendo una desmielinización e inflamación que son consideradas la base de la patología.
+La esclerosis múltiple (EM) es una enfermedad de gran impacto en la vida de los pacientes que la padecen. Un correcto diagnóstico diferencial de la enfermedad es necesario para poder proveer al paciente del mejor cuidado posible. 
 
-La pobre correlación entre las lesiones visibles en la resonancia magnética nuclear (RMN) y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM”. Ello a motivado la búsqueda de métodos complementarios para la detección y clasificación de pacientes con EM.
+A pesar de los avances técnicos en el diagnóstico de muchas enfermedades, la esclerosis múltiple actualmente no dispone de herramientas que permitan realizar un diagnóstico temprano sin realizar pruebas invasivas (Biopsia cerebral). Es necesario el desarrollo de nuevas herramientas diagnósticas para poder hacer una correcta clasificación y tratamiento de las personas con esta patología.
 
-Los estudios histopatológicos y de RMN han demostrado la existencia de daño en la materia blanca (MB) durante las primeras etapas de la EM antes de la aparición de las aparentes lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}. Es por ello que el análisis sistematizado de estas imágenes abre la puerta a nuevas herramientas diagnósticas.
 
-\subsection{Fenotipos de la Esclerosis múltiple}
+
+\subsection{Marco teorico}
+
+\subsubsection{La esclerosis múltiple y su diagnóstico}
+
+La EM es una enfermedad neurodegenerativa crónica autoinmune y es la causa más común de discapacidad en el adulto joven \cite{Polman2011}. Afecta a la mielina de las neuronas del sistema nervioso produciendo una desmielinización e inflamación que son consideradas la base de la patología \cite{Br2005}.
+
+La pobre correlación entre las lesiones visibles en la resonancia magnética nuclear (RMN) y la afectación de los pacientes es a día de hoy un problema sin resolver conocido como la “paradoja clínico-radiológica de la EM” \cite{Barkhof2002}. Ello a motivado la búsqueda de métodos complementarios para la detección y clasificación de pacientes con EM.
+
+Los estudios histopatológicos y de RMN han demostrado la existencia de daño en la materia blanca (MB) durante las primeras etapas de la EM antes de la aparición de lesiones hiperintensas en las secuencias de T2 \cite{Beer2016}. Es por ello que el análisis sistematizado de estas imágenes abre la puerta a nuevas herramientas diagnósticas.
+
+\subsubsection{Fenotipos de la Esclerosis múltiple}
 
 La neurodegeneración secundaria a las lesiones provocadas por la EM es a día de hoy difícil de constatar y cuantificar y por ello difícil de correlacionar con los fenotipos clínicamente descritos. Actualmente, la EM se clasifica en los siguientes fenotipos: clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP); según la clasificación revisada de Lublin et al\cite{Lublin2014}. La determinación de estos fenotipos se lleva a cabo a través de diferentes escalas e imágenes de RMN según los criterios revisados de McDonald\cite{Polman20112}.
 
 %TODO: Cambiar imagen por propia
-\begin{figure}[!h]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{mri}
 	\caption{Representación visual de un corte de RMN}
 	\label{fig:voxeles}
 \end{figure}
 
-\subsection{Obtención de imagenes}
+\subsubsection{Procesamiento de las imágenes de RMN}
 
 El procesamiento de imágenes de RMN ha permitido detectar y cuantificar lesiones de EM aparentemente no visibles para los radiólogos y correlacionarlas directamente con el daño histopatológico \cite{Beer2016}.
 
-Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional. Estos vóxeles son parte de una matriz, que puede ser analizada de manera sistemática. Cuando esta matriz es generada utilizando la secuencia de RMN de tensores de difusión (DTI) es posible utilizar algoritmos de tractografía para reconstruir las vías de la MB obteniendo así los conectomas.
+Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}, unidad cúbica que compone un objeto tridimensional. Estos vóxeles son parte de una matriz, que puede ser analizada de manera sistemática. A partir de diferentes análisis realizados sobre esta matriz están surgiendo nuevas formas de estudiar la conectividad cerebral.
+
+ Uno de los derivados obtenidos que permite estudiar la conectividad de la MB del cerebro son los conectomas. Los conectomas son calculados a partir de la matriz que es generada con la técnica de difusión por resonancia magnética (DWI); utilizando algoritmos de tractografía para reconstruir las vías de la MB obteniendo así una estimación de los tractos cerebrales \{fig.\ref{fig:connectome}\}.
 
 \begin{figure}[h]
 	\centering
@@ -118,24 +130,23 @@ Esto es posible gracias a que la RMN, captura vóxeles \{fig.\ref{fig:voxeles}\}
 	\label{fig:connectome}
 \end{figure}
 
-\subsection{Procesamiento de las imágenes}
-Los conectomas son recreaciones de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz anteriormente citada. La suma de todas estas direcciones permite recrear las conexiones de la MB, asumiendo que estas direcciones vienen determinadas por el agua contenida en los tejidos cerebrales.
+\subsubsection{Obtención de los conectomas}
+Los conectomas son recreaciones tridimensionales de las conexiones neuronales creadas en base a la determinación de la dirección del agua en los voxeles de la matriz que compone la RMN. La suma de todas estas direcciones permite recrear las conexiones de la MB. Esto es posible gracias a la medición de la magnitud y orientación de la difusión de las moléculas de agua dentro de los tejidos cerebrales, ya que está supeditada a la morfología de los axones.
+% TODO: citar
 
-Para estudiar estas conexiones es de gran interés tratar el cerebro como una red (grafo) siendo necesario asignar una etiqueta al origen y destino de estos tractos. Para ello, el cerebro se ha de dividir en diferente áreas o parcelaciones, asignando una etiqueta a cada una de ellas. Clásicamente se han utilizado las parcelaciones basadas en la anatómia del cráneo o las parcelaciones basadas en la citoarquitectura de las neuronas (áreas de Brodmann).
-
-Estos modelos no responden a una estructuración del cerebro en base a sus funciones, pero gracias a la RMN y a la medición del flujo arterial cerebral que esta permite hacer en las secuencias BOLD \cite{Ogawa1990}, se han podido desarrollar modelos de particiones basándose en la funcionalidad del cerebro \cite{Heller2006}.
-
-En 2015, Diez et al \cite{Diez2015} propusieron un modelo de particiones cerebrales teniendo en cuenta tanto las conexiones físicas entre las áreas como las áreas funcionales, creando un modelo del cerebro con 22 particiones estructuro-funcionales previamente no descritas. %TODO: Mejorar la descripción del método
+Para estudiar los conectomas es de gran interés tratar el cerebro como una red (grafo) \cite{Fornito} siendo necesario asignar una etiqueta al origen y destino de cada uno de los tractos que componen el conectoma. Para ello, el cerebro se ha de dividir en diferente áreas o parcelaciones, asignando una etiqueta a cada una de ellas. Clásicamente se han utilizado las parcelaciones basadas en la anatómia del cráneo o las parcelaciones basadas en la citoarquitectura de las neuronas (áreas de Brodmann).
+% TODO: citar
 
 
-\subsection{Análisis de grafos (redes)}
 
- El conectoma puede ser estudiado como un grafo (red)\cite{Fornito}. Los grafos han demostrado un gran potencial para estudiar sistemas biológicos complejos, incluyendo el sistema nervioso, y están comenzando a revelar principios fundamentales de la arquitectura y la función del cerebro. El lenguaje matemático que describe y cuantifica estas redes se llama teoría de grafos.
+\subsubsection{Análisis de grafos (redes)}
+
+Los grafos han demostrado un gran potencial para estudiar sistemas biológicos complejos, incluyendo el sistema nervioso, y están comenzando a revelar principios fundamentales de la arquitectura y la función del cerebro. El lenguaje matemático que describe y cuantifica estas redes se llama teoría de grafos.
  
-Los grafos constan de varios elementos, que aplicados a este caso pueden resumirse del siguiente modo:
+Los grafos constan de varios elementos, que aplicados a este caso pueden resumirse del siguiente modo  \{fig.\ref{fig:graph}\}:
 \begin{enumerate}[noitemsep]
-\item \textbf{Vértices (nodos):} Representan las regiones cerebrales de interés.
-\item \textbf{Enlaces (conexiones):} Estos representan la conectividad entre las regiones del cerebro.
+\item \textbf{Vértices (nodos):} Representan las parcelaciones/regiones/etiquetas de interés.
+\item \textbf{Enlaces (aristas):} Representan los tractos entre las regiones del cerebro.
 \end{enumerate}
 
 \begin{figure}[ht]
@@ -146,7 +157,10 @@ Los grafos constan de varios elementos, que aplicados a este caso pueden resumir
 	\label{fig:graph}
 \end{figure}
 
-El procesamiento de las imágenes de RMN permite obtener un grafo \{fig.\ref{fig:network}\}, en el que se pueden realizar mediciones objetivas y cuantificables de las redes neuronales. A diferencia de el trabajo de Kocevar et al.\cite{Kocevar2016} que genera los nodos de forma aleatoria, este trabajo, propone el uso de las particiones de Diez et al \cite{Diez2015} para la determinación de los nodos de los grafos.
+El procesamiento de las imágenes de RMN permite obtener un grafo del cerebro \{fig.\ref{fig:network}\}, en el que se pueden realizar mediciones objetivas y cuantificables de las redes neuronales. Las etiquetas asignada al inicio y final de cada uno de los tractos del conectoma, son las que se utilizan para determinar el nodo al que pertenece cada fibra. De este modo, hay tantos nodos como parcelaciones en el conectoma y tantos enlaces como fibras, obteniendo así la red que será estudiada.
+
+En el trabajo de Kocevar et al.\cite{Kocevar2016} utilizaron las mediciones realizadas en este grafo para determinar el fenotipo de EM del paciente estudiado obteniendo una sensibilidad del 76.499\% IC (65.9\%- 92.0\%). Esta clasificación de los pacientes según las mediciones obtenidas en el grafo es realizada por un algoritmo de aprendizaje automatizado. De esta manera, haciendo una descripción matemática del estado de la red neuronal del paciente fueron capaces de clasificar correctamente su fenotipo de EM o paciente sano.
+
 
 \begin{figure*}[b]
 	\centering
@@ -156,21 +170,47 @@ El procesamiento de las imágenes de RMN permite obtener un grafo \{fig.\ref{fig
 	\label{fig:network}
 \end{figure*}
 
-\subsection{Clasificación automatizada de los resultados}
+\subsubsection{Clasificación automatizada de los resultados}
 
 El aprendizaje automatizado es la capacidad de un algoritmo de aprender de la experiencia acumulada al realizar una tarea \cite{Friedman1997}.
 
+La experiencia se considera que son los datos aportados al algoritmo, en este caso serían por un lado los parametros que describen el grafo y  por el otro el diagnóstico establecido según los criterios de McDonald. La tarea es dar un fenotipo a partir del análisis de los parametros del grafo. Tras introducir unos datos iniciales, es decir, el grafo y el fenotipo de muchos pacientes, el algoritmo será capaz de dar un diagnóstico a partir del grafo de un nuevo paciente en base la experiencia previamente adquirida.
 
-La experiencia se considera que son los datos aportados al algoritmo, en este caso serían los conectomas y el diagnóstico establecido según los criterios de McDonald. La tarea es dar un diagnóstico a partir del análisis del conectoma. Tras introducir unos datos iniciales, es decir, el conectoma y el diagnóstico de muchos pacientes, el algoritmo será capaz de dar un diagnóstico a partir de un conectoma en base la experiencia previamente adquirida
 
-\subsection{Objetivo del estudio}
+\subsection{Justificación}
 
-El objetivo principal de este estudio es comparar la especificidad y la sensibilidad de dos métodos de clasificación diagnóstica de pacientes con EM; el método propuesto por Kocevar et al.\cite{Kocevar2016} y una variante del mismo. El método de Kocevar et al.\cite{Kocevar2016} clasifica individuos en los distintos subtipos de EM o paciente sano, basándose en el análisis de la conectividad cerebral obtenida a partir del procesamiento de imágenes de RMN cerebrales. Este análisis de la conectividad, hace uso de conectomas con nodos generados de manera aleatoria. La variente propuesta hace uso de las particiones anatómico-funcionales del cerebro descritas por Diez et al.\cite{Diez2015} para generar los nodos de forma sistemática.
+El análisis de topología de la red neuronal mediante el uso de la teoria de grafos para caracterizar la red en diferentes niveles puede suponer una manera alternativa de realizar el fenotipado de los pacientes con EM. Tras los resultados de Kocevar et al.\cite{Kocevar2016} y Muthuraman et al. \cite{Muthuraman2016}, es necesario mejorar la fiabilidad de estas herramientas y realizar estudios que fortalezcan estos primeros resultados.
 
-\subsection{Hipótesis}
 
-El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma \cite{Fornito, Zalesky2010}. La hipótesis que este estudio plantea es la mejora de la especificidad y sensibilidad del método haciendo uso de particiones calculadas en base a la estructura y funcionalidad del cerebro para crear los nodos que determinarán la topología de la red. 
+%------------------------------------------------
+\section{Objetivo del estudio}
 
+El objetivo principal de este estudio es comparar la especificidad y la sensibilidad de dos métodos de clasificación diagnóstica de pacientes con EM; el método propuesto por Kocevar et al.\cite{Kocevar2016} y una variante del mismo. El método de Kocevar et al.\cite{Kocevar2016} clasifica individuos en los distintos subtipos de EM o paciente sano, basándose en el análisis de la conectividad cerebral obtenida a partir del procesamiento de imágenes de RMN cerebrales. Este análisis de la conectividad, hace uso de grafos con nodos generados de manera aleatoria.
+
+El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma \cite{Fornito, Zalesky2010}. Por ello, este trabajo propone hacer uso de particiones cerebrales ya conocidas para la generación de los nodos del grafo de forma sistemática. La variante propuesta hace uso de las particiones anatómico-funcionales del cerebro descritas por Diez et al.\cite{Diez2015}.
+
+Las particiones anatómico-funcionales son la respuesta a los antiguos modelos de particiones que no responden a una estructuración del cerebro en base a sus funciones. Gracias a la RMN y a la medición del flujo arterial cerebral que esta permite hacer en las secuencias BOLD \cite{Ogawa1990}, se han podido desarrollar modelos de particiones basándose en la funcionalidad del cerebro \cite{Heller2006}.
+
+En 2015, Diez et al \cite{Diez2015} propusieron un modelo de particiones cerebrales teniendo en cuenta tanto las conexiones físicas entre las áreas como las áreas funcionales, creando un modelo del cerebro con 22 particiones estructuro-funcionales previamente no descritas. 
+
+
+%------------------------------------------------
+\section{Hipótesis}
+
+Las hipótesis que este estudio plantean la mejora de la sensibilidad y especificidad del método diagnóstico haciendo uso de particiones calculadas en base a la estructura y funcionalidad del cerebro para crear los nodos que determinarán la topología de la red. 
+\vspace{1em} \\
+$Sensibilidad:$
+\begin{center}
+$H_0: Sensibilidad_1 = Sensibilidad_2$ \\
+$vs$ \\
+$H_1: Sensibilidad_1 \neq Sensibilidad_2$
+\end{center}
+$Especificidad:$
+\begin{center}
+$H_0: Especificidad_1 = Especificidad_2$ \\
+$vs$ \\
+$H_1: Especificidad_1 \neq Especificidad_2$
+\end{center}
 
 %------------------------------------------------
 \section{Material y Métodos}
@@ -178,10 +218,12 @@ El modo en el que se estudia la conectividad de una red está supeditado a la to
 \subsection{Diseño}
 
 %TODO: Tipo de estudio
-Esta propuesta constituye un estudio descriptivo, analitico comparativo de dos metodologías para la clasificación automatizada de los pacientes de EM. Para ello se reutilizarán los datos del estudio previo realizado por Kocevar et al. \cite{Kocevar2016} con casos y controles.
+Esta propuesta constituye un estudio observacional, transversal, retrospectivo, analítico comparativo de dos metodologías para la clasificación automatizada de los pacientes de EM. Se hará uso de datos secundarios obtenidos de la base de datos desarrollada para el estudio de Kocevar 2016\cite{Kocevar2016}.
 
 \subsection{Sujetos}
-La fuente principal de los datos son un grupo de casos y controles que fueron reclutados de la clínica de EM del Hospital Neurológico de Lyon. 67 pacientes con EM (24 RR, 24 PP, 17 SP y 12 CIS) (29 hombres, 48 mujeres; edad media de 38,3 años, rango 21,5-48,7). Ademas se incluyeron 26 sujetos sanos de control (HC), con edad y sexo acompañados de los pacientes con EM (9 hombres, 15 mujeres, con una edad media de 35,7 años, rango 21,6-56,5). El diagnóstico y el curso de la enfermedad se establecieron de acuerdo con los criterios de McDonald's \cite{Polman2011}. La discapacidad se evaluó con la escala de estado de discapacidad extendida (mediana EDSS 4, rango 0-7). Todos los pacientes disponen de al menos una adquisición por RMN de 1.5T en secuencias: T1 3d sagital y DTI 2d Spin echo axial.
+La población diana serán aquellas personas han desarrollado alguna sintomatología asociada a la EM que disponga de un diagnóstico en base a los criterios de McDonald \cite{Polman2011}. La muestra será un grupo de casos y controles que fueron reclutados de la clínica de EM del Hospital Neurológico de Lyon entre 2014 y 2015.
+
+67 pacientes con EM (24 RR, 24 PP, 17 SP y 12 CIS) (29 hombres, 48 mujeres; edad media de 38,3 años, rango 21,5-48,7). Ademas se incluirán 26 sujetos sanos a modo de control (HC), con edad y sexo similar a la de los pacientes con EM (9 hombres, 15 mujeres, con una edad media de 35,7 años, rango 21,6-56,5). El diagnóstico y el curso de la enfermedad se establecieron de acuerdo con los criterios de McDonald's \cite{Polman2011}. La discapacidad se evaluó con la escala de estado de discapacidad extendida EDSS (mediana 4, rango 0-7). Todos los pacientes disponen de al menos una adquisición por RMN de 1.5T en secuencias: $T_1$ 3D sagital y $DTI$ 2D Spin echo axial.
 
 \begin{table}[hbt]
 \caption{Datos demográficos}
@@ -189,16 +231,63 @@ La fuente principal de los datos son un grupo de casos y controles que fueron re
 \begin{tabular}{llllll}
 \toprule
 \multicolumn{6}{l}{} \\
-     & n   & H/M    & Edad  & D.E.  & EDSS  \\
-HC   & 24  & 15/9   & 35.7  & -     & -     \\
-CIS  & 12  & 7/5    & 33.5  & 2.8   & 1.0   \\
-RR   & 24  & 20/4   & 35.1  & 6.8   & 2.5   \\
-SP   & 24  & 10/14  & 42.3  & 13.8  & 5.0   \\
-PP   & 17  & 11/6   & 40.9  & 6.7   & 4.0   \\
+     & $n$   & $H \mid M$    & $Edad$  & $D.E.$  & $EDSS$  \\
+$HC$   & 24  & 15/9   & 35.7  & -     & -     \\
+$CIS$  & 12  & 7/5    & 33.5  & 2.8   & 1.0   \\
+$RR$   & 24  & 20/4   & 35.1  & 6.8   & 2.5   \\
+$SP$   & 24  & 10/14  & 42.3  & 13.8  & 5.0   \\
+$PP$   & 17  & 11/6   & 40.9  & 6.7   & 4.0   \\
 \bottomrule
 \end{tabular}
 \label{tab:demographics}
 \end{table}
+
+\subsubsection{Criterios de inclusión}
+Pacientes que hayan sido diagnosticados de EM y que cumplan las siguientes condiciones
+\begin{enumerate}[noitemsep]
+\item Hace menos de 5 años que fueron diagnosticados de EM en el momento de la inclusión en el estudio
+\item Haya sido diagnosticados haciendo uso de los criterios revisados de McDonald \cite{Polman20112}
+\item Dispuestos y capaces de dar su autorización por escrito.
+\item Sean mayores de edad
+\end{enumerate}
+
+\subsubsection{Criterios de exclusión}
+Se excluirá a los participantes que:
+\begin{enumerate}[noitemsep]
+\item Están embarazadas o planean quedarse embarazadas en un periodo menor a 6 meses
+\item Hayan sido previamente diagnosticados de enfermedades neuropsiquiatricas, temporales o no incluyendo la depresión
+\item Su presión arterial sistólica $< 140 mmHg$ o diastólica $< 90 mmHg$, están recibiendo tratamiento o tienen antecedentes de hipertensión
+\item Episodios previos de accidentes cerebrovasculares o vasculopatías
+\item Están tratados con antidepresivos o neurolépticos por otras patologías
+\end{enumerate}
+
+
+\subsection{Instrumentos de medición}
+Para la adquisición de RMN se utilizó sistema Siemens Sonata de {\tt 1,5}T utilizando una bobina de cabeza de 8 canales. El protocolo RMN de adquisición consistió en una secuencia sagital 3D $T_1$ (1 x 1 x 1mm3, TE / TR = 4/2000ms) y una secuencia axial DTI de spin-echo 2D (TE / TR = 86 / 6900ms, 2 x 24 direcciones de difusión en gradiente, b = 1000, resolución espacial de 2,5 x 2,5 x 2,5 mm3) orientada en el plano AC/PC.
+
+Para el diagnóstico y la fenotipación se utilizaron los criterios revisados de McDonald's \cite{Polman2011}, criterios basados tanto en la clínica de los pacientes así como en la observación de lesiones por un radiólogo en secuencia $T_2$ en la RMN. Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. La escala EDSS, es semicuantitativa discreta.
+
+\subsection{Plan de análisis}
+
+Tras capturar RMN de los pacientes con EM, se genera un conectoma, que será analizado como un grafo, obteniendo del grafo unos valores de medición que lo describen matematicamente. Por otra parte los pacientes obtendrán un diagnóstico clínico que será el que sirva de referencia para realizar la clasificación.
+
+En este caso el algoritmo utilizado máquinas de vectores de soporte (SVM), es un algoritmo de aprendizaje supervisado que analizan los datos utilizados para la clasificación de estos; y el algoritmo utilizado por Kocevar et al.\cite{Kocevar2016}
+
+
+\begin{enumerate}[noitemsep]
+\item Realizar conectomas
+\item Crear grafos en base a part. anat-estruc
+\item Obtener propiedadades de los grafos
+\item Calcular p's entre grupos (HP, PP, SP, CIS) (CASE vs CONTROL) % SOBRA
+\item Clasificar pacientes con SVM
+\item medida del rendimiento de la clasificación: vpp , sensibilidad y valor F
+\item Realizar los mismo con el nuevas particiones
+\item comparar ambos modelos
+\end{enumerate}
+
+
+The evaluation of diagnostic tests attempts to obtain one or more statistical parameters which can indicate the intrinsic diagnostic utility of a test. Sensitivity, specificity and predictive value are not appropriate for this use\cite{Birkett1988}.
+
 
 \subsection{Variables intermedias}
 Se pueden estimar varias métricas para medir las propiedades de grafo generado a partir del cerebral, para ello nos basaremos en aquellas propuestas por Rubinov et al.\cite{Rubinov2010}. Brevemente, se tratan de métricas derivadas de cada una de estas características, estimando un valor que posteriormente será utilizado para la clasificación.
@@ -226,30 +315,6 @@ En este caso se medirán la densidad (D), asortividad (r), eficiencia (E), trans
 If both diagnostic tests were performed on each patient, then paired data result and methods that account for the correlated binary outcomes are necessary (McNemar's test).
 
 
-
-\subsection{Instrumentos de medición}
-Para la adquisición de RMN se utilizó sistema Siemens Sonata de {\tt 1,5T} utilizando una bobina de cabeza de 8 canales. El protocolo RMN de adquisición consistió en una secuencia sagital 3D T1 (1 x 1 x 1mm3, TE / TR = 4/2000ms) y una secuencia axial DTI de spin-echo 2D (TE / TR = 86 / 6900ms, 2 x 24 direcciones de difusión en gradiente, b = 1000, resolución espacial de 2,5 x 2,5 x 2,5 mm3) orientada en el plano AC/PC.
-
-Para el diagnóstico y la clasificación se utilizaron los criterios revisados de McDonald's \cite{Polman2011}, unos criterios basados en la clínica de los pacientes así como de herramientas como la RMN. Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. La escala EDSS, es numérica y discreta del 0 al 10.
-
-\subsection{Plan de análisis}
-
-Tras capturar RMN de los pacientes con EM, se genera un conectoma, que será analizado como un grafo, obteniendo del grafo unos valores de medición que lo describen matematicamente. Por otra parte los pacientes obtendrán un diagnóstico clínico que será el que sirva de referencia para realizar la clasificación.
-
-En este caso el algoritmo utilizado máquinas de vectores de soporte (SVM), es un algoritmo de aprendizaje supervisado que analizan los datos utilizados para la clasificación de estos; y el algoritmo utilizado por Kocevar et al.\cite{Kocevar2016}
-
-
-\begin{enumerate}[noitemsep]
-\item Realizar conectomas
-\item Crear grafos en base a part. anat-estruc
-\item Obtener propiedadades de los grafos
-\item Calcular p's entre grupos (HP, PP, SP, CIS) (CASE vs CONTROL) % SOBRA
-\item Clasificar pacientes con SVM
-\item medida del rendimiento de la clasificación: vpp , sensibilidad y valor F
-\item Realizar los mismo con el nuevas particiones
-\item comparar ambos modelos
-\end{enumerate}
-
 %------------------------------------------------
 \section{Resultados}
 Los esperados si se llevara a cabo.
@@ -274,6 +339,9 @@ La combinación de la teoría de grafos y la naturaleza predictiva del aprendiza
 \end{list}
 
 Desde el punto de vista metodológico, el estudio de Kocevar et al. \cite{Kocevar2016} puede sufrir varias limitaciones. La primera consiste en la elección arbitraria del método de parcelación para la definición de los nodos de los grafos. De hecho, los parámetros de la red están influenciados por la el número de nodos de la red \cite{Zalesky2010}. Esta limitación técnica es la que motiva  de este estudio., el cual se realiza una comparación del mismo método de clasificación pero con el método de parcelación basado en las parcelaciones estructuro-funcionales.
+
+
+\subsection{Implicaciones médicas}
 
 \subsection{Aspectos éticos}
 Paso un comite de etica en su momento, descubrir que se debatio, que mas se podría debatir
