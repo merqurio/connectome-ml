@@ -3,37 +3,18 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[fleqn,10pt]{UICArticle} % Document font size and equations flushed left
+\documentclass[fleqn,12pt]{UICArticle} % Document font size and equations flushed left
 \usepackage[spanish]{babel} % Specify a different language here - english by default
 \usepackage{listings}
 \usepackage{dirtytalk}
 
 %----------------------------------------------------------------------------------------
-%	COLUMNS
+%	WORK INFORMATION
 %----------------------------------------------------------------------------------------
 
-\setlength{\columnsep}{0.75cm} % Distance between the two columns of text
-
-%----------------------------------------------------------------------------------------
-%	COLORS
-%----------------------------------------------------------------------------------------
-
-\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
-\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
-
-%----------------------------------------------------------------------------------------
-%	HYPERLINKS
-%----------------------------------------------------------------------------------------
-
-\usepackage{hyperref} % Required for hyperlinks
-\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
-
-%----------------------------------------------------------------------------------------
-%	ARTICLE INFORMATION
-%----------------------------------------------------------------------------------------
-
-\JournalInfo{Universitat Internacional de Catalunya} % Journal information
-\Archive{Trabajo Fin de Grado, Medicina, ~2016-2017} % Additional notes (e.g. copyright, DOI, review/research article)
+\University{Universitat Internacional de Catalunya}
+\TypeOfWork{Trabajo fin de grado}
+\Degree{Grado en Medicina y Cirugía}
 \PaperTitle{El uso de conectomas basados en particiones estructuro-funcionales del cerebro para la clasificación automatizada de subtipos de esclerosis múltiple.} % Article title
 \Authors{Gabriel de Maeztu\textsuperscript{1}*} % Authors
 \affiliation{\textsuperscript{1}\textit{Facultad de Medicina, Universitat Internacional de Catalunya, Barcelona, Spain}} 
@@ -71,11 +52,20 @@ La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), inc
 
 % Print the title and abstract box
 \maketitle
+\thispagestyle{empty} 
+\clearpage
+
+% Blank page
+\thispagestyle{empty} 
+\null\newpage
+
+% Abstract page
+\makeabstract
+\thispagestyle{empty} 
+\clearpage
 
 % Print the contents section
 \tableofcontents
-
-% Removes page numbering from the first page
 \thispagestyle{empty} 
 \clearpage
 

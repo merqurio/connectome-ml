@@ -1,25 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Author:
-% Gabriel de Maeztu <gabriel.maeztu@gmail.com>
+% Gabriel de Maeztu <gabriel.mp@uic.es>
 %
-% Original author:
-% Mathias Legrand (legrand.mathias@gmail.com)
-% With extensive modifications by:
-% Vel (vel@latextemplates.com)
-%
-% This file is based on 
-% BMJ Like article
 % Class File
-% Version 2.2 (05/01/17)
+% Version 0.2 (05/01/17)
 %
 % License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% CC BY-NC-SA 4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{SelfArx}[25/01/2012, v1.0]
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
@@ -44,24 +36,42 @@
 \RequirePackage{graphicx,xcolor}
 \RequirePackage{booktabs}
 
+%----------------------------------------------------------------------------------------
+%	COLUMNS
+%----------------------------------------------------------------------------------------
+
+\setlength{\columnsep}{0.75cm} % Distance between the two columns of text
+
+%----------------------------------------------------------------------------------------
+%	COLORS
+%----------------------------------------------------------------------------------------
+
+\definecolor{color1}{RGB}{104, 92, 83} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+\definecolor{color3}{RGB}{27, 159, 224}
+\definecolor{white}{RGB}{250, 250, 250}
+
 %----------------------------------------------------------------------
 %	MARGINS	
 %----------------------------------------------------------------------
 	  	  
-\RequirePackage[left=2cm,%
-right=2cm,%
-top=2.5cm,%
-bottom=2.5cm,%
-headheight=11pt,%
-letterpaper]{geometry}%
+\RequirePackage[
+left=3cm,%
+right=3cm,%
+top=3.5cm,%
+bottom=3.5cm,%
+headheight=12pt,%
+a4paper]{geometry}%
 				
 %----------------------------------------------------------------------
 %	FIGURES AND TABLES CAPTIONS
 %----------------------------------------------------------------------
 
-\RequirePackage[labelfont={bf,sf,small},%
+\RequirePackage[
+labelfont={bf,sf,small},%
 labelsep=period,%
-justification=raggedright]{caption}
+justification=raggedright
+]{caption}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
 				
@@ -84,43 +94,47 @@ justification=raggedright]{caption}
 \renewcommand{\footrulewidth}{0pt}% % No footer rule
 
 %----------------------------------------------------------------------
-%	SECTION/SUBSECTION/PARAGRAPH SET-UP
-%----------------------------------------------------------------------
+%	TITLE+ABSTRACT
+%----------------------------------------------------------------------  
 
-\RequirePackage[explicit]{titlesec}
-\titleformat{\section}
-  {\color{color1}\large\sffamily\bfseries}
-  {}
-  {0em}
-  {\colorbox{color2!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\centering\arabic{section}. #1}}}
-  []
-\titleformat{name=\section,numberless}
-  {\color{color1}\large\sffamily\bfseries}
-  {}
-  {0em}
-  {\colorbox{color2!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\centering#1}}}
-  []  
-\titleformat{\subsection}
-  {\color{color1}\sffamily\bfseries}
-  {\thesubsection}
-  {0.5em}
-  {#1}
-  []
-\titleformat{\subsubsection}
-  {\sffamily\small\bfseries}
-  {\thesubsubsection}
-  {0.5em}
-  {#1}
-  []    
-\titleformat{\paragraph}[runin]
-  {\sffamily\small\bfseries}
-  {}
-  {0em}
-  {#1} 
-\titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
-\titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
-\titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
-\titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{10pt}
+\newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
+\newcommand{\TypeOfWork}[1]{\def\@TypeOfWork{#1}}
+\newcommand{\Degree}[1]{\def\@Degree{#1}}
+\newcommand{\Authors}[1]{\def\@Authors{#1}}
+\newcommand{\University}[1]{\def\@University{#1}}
+\newcommand{\Abstract}[1]{\def\@Abstract{#1}}
+\newcommand{\AbstractEng}[1]{\def\@AbstractEng{#1}}
+\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
+
+% ---------------------------------------------------------------------
+
+\renewcommand{\@maketitle}{%
+\thispagestyle{empty}%
+\vskip50pt%
+\hspace*{-1.2cm}
+\includegraphics[width=\textwidth]{img/logo}
+\vskip30pt%
+{\raggedright\color{color1}\sffamily\bfseries\fontsize{14}{16}\selectfont \MakeUppercase{\@TypeOfWork}}%
+\vskip20pt%
+{\raggedright\color{color1}\sffamily\bfseries\fontsize{18}{23}\selectfont \@PaperTitle\par}%
+\vskip30pt%
+{\raggedright\color{color1}\sffamily\bfseries\fontsize{14}{16}\selectfont \@Degree}%
+\vfill
+{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont  \@Authors\par}%
+	\vskip4pt%
+	\begingroup%
+	\raggedright\sffamily\small%
+	\footnotesize\@affiliation\par%
+	\endgroup%%
+}
+
+\newcommand{\makeabstract}{
+	\parbox{\textwidth-10\fboxsep-2\fboxrule}{
+		\sffamily\textbf{\abstractname}\\\@Abstract\\[4pt]%
+		\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
+		\textbf{\keywordname}\\\@Keywords%
+	}	
+}
 
 %----------------------------------------------------------------------
 %	TABLEOFCONTENTS SET-UP
@@ -133,22 +147,22 @@ justification=raggedright]{caption}
 \contentsmargin{0cm}
 \titlecontents{section}[\tocsep]
   {\addvspace{4pt}\small\bfseries\sffamily}
-  {\contentslabel[\thecontentslabel]{\tocsep}}
+  {\contentslabel[\thecontentslabel]{\tocsep}\hspace{.3cm}}
   {}
   {\hfill\thecontentspage}
   []
 \titlecontents{subsection}[\tocsep]
-  {\addvspace{2pt}\sffamily}
-  {\contentslabel[\thecontentslabel]{\tocsep}}
+  {\addvspace{3pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{\tocsep}\hspace{.3cm}}
   {}
   {\ \titlerule*[.5pc]{.}\ \thecontentspage}
-  []
-\titlecontents*{subsubsection}[\tocsep]
-  {\footnotesize\sffamily}
+  []  
+\titlecontents{subsubsection}[\tocsep]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{\tocsep}\hspace{.6cm}}
   {}
-  {}
-  {}
-  [\ \textbullet\ ]  
+  {\ \titlerule*[.5pc]{.}\ \thecontentspage}
+  [] 
 
 %----------------------------------------------------------------------
 %	MULTIPLE AUTHOR SET
@@ -180,64 +194,43 @@ justification=raggedright]{caption}
 %\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
 
 %----------------------------------------------------------------------
-%	ABSTRACT+AUTHOR FRAME
-%----------------------------------------------------------------------  
+%	SECTION/SUBSECTION/PARAGRAPH SET-UP
+%----------------------------------------------------------------------
 
-\newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
-\newcommand{\Archive}[1]{\def\@Archive{#1}}
-\newcommand{\Authors}[1]{\def\@Authors{#1}}
-\newcommand{\JournalInfo}[1]{\def\@JournalInfo{#1}}
-\newcommand{\Abstract}[1]{\def\@Abstract{#1}}
-\newcommand{\AbstractEng}[1]{\def\@AbstractEng{#1}}
-\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
-
-% ---------------------------------------------------------------------
-
-\renewcommand{\@maketitle}{%
-\twocolumn[{%
-\thispagestyle{empty}%
-\vskip-36pt%
-{\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
-\vskip20pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{18}{23}\selectfont \@PaperTitle\par}%
-\vskip10pt%
-{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont  \@Authors\par}%
-\vskip18pt%
-\fcolorbox{white}{white}{%
-	\parbox{\textwidth-2\fboxsep-2\fboxrule}{
-		\centering%
-		\colorbox{color2!10}{%
-			\parbox{\textwidth-4\fboxsep-2\fboxrule}{%
-			\ifx\@Keywords\@empty%
-				\centering%
-				\vskip4pt%
-				\parbox{\textwidth-8\fboxsep-2\fboxrule}{
-					\sffamily\textbf{\abstractname}\\\@Abstract%
-				}
-				\vskip4pt%
-			\else%
-				\centering%
-				\vskip10pt%
-				\parbox{\textwidth-10\fboxsep-2\fboxrule}{
-					\sffamily\textbf{\abstractname}\\\@Abstract\\[4pt]%
-					\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
-					\textbf{\keywordname}\\\@Keywords%
-					
-				}
-				\vskip10pt%
-			\fi%
-			}%
-		}%
-	\vskip4pt%
-	\begingroup%
-	\raggedright\sffamily\small%
-	\footnotesize\@affiliation\par%
-	\endgroup%%
-}%
-}%
-\vskip10pt%
-}]%
-}
+\RequirePackage[explicit]{titlesec}
+\titleformat{\section}
+  {\color{white}\large\sffamily\bfseries}
+  {}
+  {0em}
+  {\colorbox{color3!60}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\hspace{15pt}\arabic{section}. #1}}}
+  []
+\titleformat{name=\section,numberless}
+  {\color{color1}\large\sffamily\bfseries}
+  {}
+  {0em}
+  {\colorbox{color2!5}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\hspace{15pt}#1}}}
+  []  
+\titleformat{\subsection}
+  {\color{color3}\sffamily\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {#1}
+  []
+\titleformat{\subsubsection}
+  {\color{color1!80}\sffamily\small\bfseries}
+  {\thesubsubsection}
+  {0.5em}
+  {#1}
+  []    
+\titleformat{\paragraph}[runin]
+  {\sffamily\small\bfseries}
+  {}
+  {0em}
+  {#1} 
+\titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
+\titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
+\titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
+\titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 
 %----------------------------------------------------------------------
 %	REFERENCES
@@ -251,3 +244,10 @@ justification=raggedright]{caption}
 \addcontentsline{toc}{section}{\refname}%
 \oldbibliography{#1}%
 \setlength\itemsep{0pt}}%
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
