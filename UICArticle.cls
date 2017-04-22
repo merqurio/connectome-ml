@@ -24,7 +24,7 @@
 %	FONTS
 %----------------------------------------------------------------------
 
-\RequirePackage{times}      % Loads the Times-Roman Fonts
+\RequirePackage{helvet}      % Loads the Times-Roman Fonts
 \RequirePackage{mathptmx}   % Loads the Times-Roman Math Fonts
 
 %----------------------------------------------------------------------
@@ -52,9 +52,9 @@
 \definecolor{white}{RGB}{250, 250, 250}
 
 %----------------------------------------------------------------------
-%	MARGINS	
+%	MARGINS
 %----------------------------------------------------------------------
-	  	  
+
 \RequirePackage[
 left=3cm,%
 right=3cm,%
@@ -62,7 +62,7 @@ top=3.5cm,%
 bottom=3.5cm,%
 headheight=12pt,%
 a4paper]{geometry}%
-				
+
 %----------------------------------------------------------------------
 %	FIGURES AND TABLES CAPTIONS
 %----------------------------------------------------------------------
@@ -74,7 +74,7 @@ justification=raggedright
 ]{caption}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
-				
+
 %----------------------------------------------------------------------
 %	PAGE HEADER
 %----------------------------------------------------------------------
@@ -93,34 +93,42 @@ justification=raggedright
 \renewcommand{\headrulewidth}{0pt}% % No header rule
 \renewcommand{\footrulewidth}{0pt}% % No footer rule
 
-%----------------------------------------------------------------------
-%	TITLE+ABSTRACT
-%----------------------------------------------------------------------  
 
+%----------------------------------------------------------------------
+%	VARIABLES
+% ---------------------------------------------------------------------
 \newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
 \newcommand{\TypeOfWork}[1]{\def\@TypeOfWork{#1}}
 \newcommand{\Degree}[1]{\def\@Degree{#1}}
+\newcommand{\Date}[1]{\def\@Date{#1}}
 \newcommand{\Authors}[1]{\def\@Authors{#1}}
 \newcommand{\University}[1]{\def\@University{#1}}
 \newcommand{\Abstract}[1]{\def\@Abstract{#1}}
 \newcommand{\AbstractEng}[1]{\def\@AbstractEng{#1}}
 \newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 
-% ---------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------
+
 
 \renewcommand{\@maketitle}{%
-\thispagestyle{empty}%
-\vskip50pt%
-\hspace*{-1.2cm}
-\includegraphics[width=\textwidth]{img/logo}
-\vskip30pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{14}{16}\selectfont \MakeUppercase{\@TypeOfWork}}%
-\vskip20pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{18}{23}\selectfont \@PaperTitle\par}%
-\vskip30pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{14}{16}\selectfont \@Degree}%
-\vfill
-{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont  \@Authors\par}%
+	\thispagestyle{empty}%
+	\vskip50pt%
+	\hspace*{-1.2cm}
+	\includegraphics[width=\textwidth]{img/logo}
+	\vskip30pt%
+	{\raggedright\color{color1}\sffamily\bfseries\fontsize{14}{16}\selectfont \MakeUppercase{\@TypeOfWork}}%
+	\vskip20pt%
+	{\raggedright\color{color1}\sffamily\bfseries\fontsize{18}{23}\selectfont \@PaperTitle\par}%
+	\vskip30pt%
+	{\raggedright\color{color1}\sffamily\bfseries\fontsize{14}{16}\selectfont \@Degree}%
+
+	% Go to the end
+	\vfill
+	{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont \@Date\par}%
+	{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont \@Authors\par}%
 	\vskip4pt%
 	\begingroup%
 	\raggedright\sffamily\small%
@@ -128,18 +136,27 @@ justification=raggedright
 	\endgroup%%
 }
 
+%----------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------
+
 \newcommand{\makeabstract}{
 	\parbox{\textwidth-10\fboxsep-2\fboxrule}{
+		\linespread{1.3}
 		\sffamily\textbf{\abstractname}\\\@Abstract\\[4pt]%
-		\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
+		\ifdefined\@AbstractEng
+			\vskip20pt%
+			\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
+		\fi
+		\vskip20pt%
 		\textbf{\keywordname}\\\@Keywords%
-	}	
+	}
 }
 
 %----------------------------------------------------------------------
 %	TABLEOFCONTENTS SET-UP
 %----------------------------------------------------------------------
-\newlength{\tocsep} 
+\newlength{\tocsep}
 \setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
 \setcounter{tocdepth}{3} % Three levels in the table of contents section: sections, subsections and subsubsections
 
@@ -156,18 +173,18 @@ justification=raggedright
   {\contentslabel[\thecontentslabel]{\tocsep}\hspace{.3cm}}
   {}
   {\ \titlerule*[.5pc]{.}\ \thecontentspage}
-  []  
+  []
 \titlecontents{subsubsection}[\tocsep]
   {\addvspace{2pt}\sffamily}
   {\contentslabel[\thecontentslabel]{\tocsep}\hspace{.6cm}}
   {}
   {\ \titlerule*[.5pc]{.}\ \thecontentspage}
-  [] 
+  []
 
 %----------------------------------------------------------------------
 %	MULTIPLE AUTHOR SET
-%----------------------------------------------------------------------  
-  
+%----------------------------------------------------------------------
+
 \newcount\@authcnt
 \newcount\@tmpcnt\@tmpcnt\z@
 
@@ -180,7 +197,7 @@ justification=raggedright
    \let\next\relax
   \fi
 \next}
-	 
+
 \newcommand{\affiliation}[1]{%
     \global\advance\@authcnt1
     \expandafter\gdef\csname @auth\romannumeral\the\@authcnt\endcsname
@@ -188,7 +205,7 @@ justification=raggedright
 
 %----------------------------------------------------------------------
 %	LIST CONTROL
-%----------------------------------------------------------------------  
+%----------------------------------------------------------------------
 
 \RequirePackage{enumitem}
 %\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
@@ -202,14 +219,14 @@ justification=raggedright
   {\color{white}\large\sffamily\bfseries}
   {}
   {0em}
-  {\colorbox{color3!60}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\hspace{15pt}\arabic{section}. #1}}}
+  {\colorbox{color3}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\hspace{15pt}\arabic{section}. #1}}}
   []
 \titleformat{name=\section,numberless}
   {\color{color1}\large\sffamily\bfseries}
   {}
   {0em}
   {\colorbox{color2!5}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\hspace{15pt}#1}}}
-  []  
+  []
 \titleformat{\subsection}
   {\color{color3}\sffamily\bfseries}
   {\thesubsection}
@@ -217,16 +234,16 @@ justification=raggedright
   {#1}
   []
 \titleformat{\subsubsection}
-  {\color{color1!80}\sffamily\small\bfseries}
+  {\color{color1}\sffamily\small\bfseries}
   {\thesubsubsection}
   {0.5em}
   {#1}
-  []    
+  []
 \titleformat{\paragraph}[runin]
   {\sffamily\small\bfseries}
   {}
   {0em}
-  {#1} 
+  {#1}
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
@@ -234,7 +251,7 @@ justification=raggedright
 
 %----------------------------------------------------------------------
 %	REFERENCES
-%----------------------------------------------------------------------  
+%----------------------------------------------------------------------
 
 % Remove brackets from numbering in List of References
 \renewcommand{\@biblabel}[1]{\bfseries\color{color1}\textsuperscript{[#1]}}
