@@ -41,12 +41,13 @@ Humans [D006801]
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
-\Abstract{
-La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), incluso en las zonas que parecen normales en la resonancia magnética nuclear (IRMN). En los últimos años se ha demostrado que gracias al uso de conectomas, se pueden detectar lesiones en sustancia blanca de apariencia radiológica normal. Actualmente los conectomas se generan a partir de parcelaciones anatómicas en base a la anatomía del cráneo. El objetivo de este estudio es comparar el mismo método de clasificación pero con conectomas basados en la parcelación estructuro-funcional del cerebro. Para ello se realizará un estudio observacional retrospectivo de casos-control utilizando IRMN de bases de datos de acceso libre de con EM y que tengan un diagnóstico clínico según los criterios de McDonald.
+\Abstract{ 
+La necesidad de desarrollar nuevos marcadores para la esclerosis multiple (EM) ha empujado a la búsqueda de métodos alternativos para medir la afectación de la enfermedad sobre la materia blanca (MB). La conectómica, que estudia la conectividad cerebral como si de una red o grafo se tratara, está aportando nuevos marcadores, demostrando una correlación entre la afectación de la red y la afectación de la EM. Actualmente los conectomas están demostrando su posible potencial en la clasificación temprana de los pacientes a los diferentes fenotipos EM o paciente sano. El objetivo de este estudio es comparar el método de clasificación de pacientes con EM propuesto por Kocevar et al. con una variente donde las particiones cerebrales utilizadas para la creación del conectoma están basadas en la parcelación estructuro-funcional del cerebro. Para ello se reutilizarán los datos de Kocevar et al. (67 pacientes y 26 controles) y se compararán la sensibilidad y especificidad entre estos dos métodos de clasificación de pacientes.
+ 
 ~}
 
 \AbstractEng{
-La materia blanca (MB) del cerebro se daña en la esclerosis múltiple (EM), incluso en las zonas que parecen normales en la resonancia magnética nuclear (IRMN). En los últimos años se ha demostrado que gracias al uso de conectomas, se pueden detectar lesiones en sustancia blanca de apariencia radiológica normal. Actualmente los conectomas se generan a partir de parcelaciones anatómicas en base a la anatomía del cráneo. El objetivo de este estudio es comparar el mismo método de clasificación pero con conectomas basados en la parcelación estructuro-funcional del cerebro. Para ello se realizará un estudio observacional retrospectivo de casos-control utilizando IRMN de bases de datos de acceso libre de con EM y que tengan un diagnóstico clínico según los criterios de McDonald.
+The need to develop new markers for multiple sclerosis (MS) has led to the search for alternative methods to measure disease involvement on white matter (WM). Connectivism, which studies brain connectivity as if it were a network or graph, is contributing new markers, demonstrating a correlation between the network's involvement and the involvement of MS. Currently connectomas are demonstrating their potential in the early classification of patients to different MS or healthy patient phenotypes. The objective of this study is to compare the method of classification of MS patients proposed by Kocevar et al. With a variant where the brain partitions used for the creation of the connectam are based on the structural-functional splitting of the brain. For this purpose, data from Kocevar et al. (67 patients and 26 controls) and will compare the sensitivity and specificity between these two methods of classifying patients.
 ~}
 % TODO: Mejorar abstract
 % quitar toda la parte de como se generan y añadir la parte de rehacer comparando con otros datos
@@ -310,9 +311,9 @@ Los datos que se han de obtener para poder comparar ambos tests son por un lado 
 
 Para la adquisición de IRMN se utilizó el modelo Siemens Sonata de $1,5T$ utilizando una bobina de cabeza de $8$ canales. El protocolo IRMN de adquisición consistió en una secuencia sagital 3D $T_1$ (1 x 1 x 1mm3, TE / TR = 4/2000ms) y una secuencia axial DTI de spin-echo 2D (TE / TR = 86 / 6900ms, 2 x 24 direcciones de difusión en gradiente, b = 1000, resolución espacial de 2,5 x 2,5 x 2,5 mm3) orientada en el plano AC/PC.
 
-Tras la adquisición, el procesamiento de la imágenes se realizará con el software FSL \cite{Jenkinson2012} y con el software MRtrix \cite{Tournier2012} para la tractografía y obtención del grafo. Esta última operación se repetira en dos ocasiones, una con los nodos aleatorios de Kocevar et al. y otra con las pariticiones estructuro-funcionales de Diez et al. 
+Tras la adquisición, el procesamiento de la imágenes se realizará con el software FSL \cite{Jenkinson2012} y la tractografía y obtención del grafo se realizará con el software MRtrix \cite{Tournier2012}. Esta última operación se repetirá en dos ocasiones, una con los nodos aleatorios de Kocevar et al. y otra con las pariticiones estructuro-funcionales de Diez et al. En la \{fig.\ref{fig:pipeline}\} queda reflejado este proceso.
 
-Se pueden estimar varias métricas para medir las propiedades de grafo generado, para ello nos basaremos en aquellas propuestas por Rubinov et al.\cite{Rubinov2010}. Esta última operación se realizará con el paquete de análisis NetworkX para obtener las medidas de segregación, integración, centralidad, resistencia y motif.
+Se pueden estimar varias métricas para medir las propiedades de grafo generado, para ello nos basaremos en aquellas propuestas por Rubinov et al.\cite{Rubinov2010}. Esta última operación se realizará con el paquete de análisis NetworkX \cite{Daducci2012} para obtener las medidas de segregación, integración, centralidad, resistencia y motif.
 
 
 Para el diagnóstico y el fenotipado de los pacientes, nos basaremos en los datos recolectados por los clínicos. Estos utilizaron los criterios revisados de McDonald \cite{Mcdonald2001, Polman2011}, criterios basados tanto en la clínica de los pacientes así como en la observación de lesiones por un radiólogo en secuencia $T_2$ en la IRMN \{fig.\ref{fig:mcdonald}\}.  Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. El EDSS de un sistema de puntuación que valora diversos aspecto del paciente y asigna al paciente un resultado dentro de una escala semicuantitativa discreta \{fig.\ref{fig:edss}\}.
@@ -333,12 +334,16 @@ Para el diagnóstico y el fenotipado de los pacientes, nos basaremos en los dato
 	\label{fig:edss}
 \end{figure}
 
-\subsection{Obtención de las variables finales}
-Tras obtener las métricas que describen la red, estas métricas pasarán junto con el diagnóstico clínico por un algoritmo de aprendizaje automatizado. Este algoritmo aprenderá a clasificar a los sujetos en una de las categorías de la esclerosis múltiple o paciente sano en base a estas métricas. En este caso el algoritmo utilizado es la máquina de vectores de soporte (SVM).
+\subsection{Variables finales}
 
-Con los resultados obtenidos a partir de este algoritmo y con la clasificación previa realizada por los clínicos, crearemos una matriz de confusión a partir de la cual se podrá calcular la sensibilidad y especificidad de este test. Repetiremos este mismo paso para las métricas obtenidas haciendo uso de las particiones de Diez et al. De esta manera obtendremos nuestras variables finales, la sensibilidad y especificidad para las dos herramientas de clasificación, pudiendo así compararlas entre sí. 
+Las variables de finales para cada paciente son el diagnóstico de EM y las 5 mediciones que describen el grafo, formando un total de 6 variables. El diagnóstico se trata de una variable cualitativa con 5 posibles casos, paciente sano (HC), clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP). Las 5 mediciones que describen el grafo se tratan de 5 variables cuantitativas continuas.
 
-\begin{table}[]
+\subsection{Análisis estadístico}
+Tras obtener las métricas que describen la red, estas pasarán junto con el diagnóstico clínico por un algoritmo de aprendizaje automatizado. Este algoritmo aprenderá a clasificar a los sujetos en una de las categorías de la esclerosis múltiple o paciente sano en base a estas métricas. En este caso el algoritmo utilizado es la máquina de vectores de soporte (SVM).
+
+Con los resultados obtenidos a partir de este algoritmo y con la clasificación previa realizada por los clínicos, crearemos una matriz de confusión \ref{table:matriz} a partir de la cual se podrá calcular la sensibilidad y especificidad de estos tests. Repetiremos esta operación en dos ocasiones, una con la particiones aleatorias de Kocevar et al. y otra con las particiones de Diez et al. De esta manera obtendremos, la sensibilidad y especificidad para las dos herramientas de clasificación, pudiendo así compararlas entre sí. 
+
+\begin{table}[h]
 \centering
 \label{matriz}
 \begin{tabular}{rlllll}
@@ -352,54 +357,49 @@ SP                                                  & \textit{p} & \textit{q} & 
 RR                                                  & \textit{u} & \textit{v} & \textit{w} & \textit{x} & \textit{y}
 \end{tabular}
 \vskip2em
-\caption{Matriz de confusión entre el $test_1$ y el diagnóstico clínico}
+\caption{Matriz de confusión entre el $test_{a/b}$ y el diagnóstico clínico}
 \end{table}
 
-\subsection{Análisis estadístico}
-En base a la especificidad y sensibilidad obtenida para los dos test de clasificación, pondremos a prueba las hipótesis del trabajo. Ambos tests se han realizado sobre los mismo pacientes, por lo que al tratarse de datos apareados en este caso el uso de la prueba de McNemar estaría indicada. El criterio de significación utilizado será $\alpha = 0,05$.
+En base a la especificidad y sensibilidad obtenida para los dos test de clasificación, pondremos a prueba las hipótesis del trabajo. Ambos tests se realizarán sobre los mismo pacientes, por lo que al tratarse de datos pareados estaría indicado realizar la prueba de McNemar como test estdístico. El criterio de significación utilizado será de $\alpha = 0,05$.
 
 
 \subsection{Cronograma}
 
-%------------------------------------------------
-\section{Resultados}
-Los esperados si se llevara a cabo.
+La duración aproximada para la realización de este estudio es de 11 meses. Debido a la complejidad de los datos a estudio es importante determinar el máximo numero de parámetros, para minimizar el efecto la variabilidad debida al azar y la correcta preparación de las herramientas con las que se llevarán a cabo el análisis. En el siguiente cronograma, \{fig.\ref{fig:gantt}\} en la página  \pageref{fig:gantt} se resumen las actividades a realizar durante este periodo de tiempo.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{img/gantt} 
+	\caption{Cronograma de la investigación}
+	\label{fig:gantt}
+\end{figure}
+
 
 %------------------------------------------------
 \section{Discusión}
 
-La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico y pronóstico de distintos trastornos neurológicos dado que estas redes se ven afectadas durante la enfermedad. 
+La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico y pronóstico de distintos trastornos neurológicos. Las nuevas capacidades técnicas de explorar la estimación de las redes neuronales están suponiendo un avance en la búsqueda de nuevos marcadores no invasivos \cite{Tymofiyeva2017,Fornito2015,Sun2016}.
 
-%%TODO Esto es importante porque..
-%Mejor class == mejor tto, mejor pronostico
-%Mejor medición del daño, mejor medición de la efectividad de un tto.
+Los primeros resultados satisfactorios en la aplicación de estos avances en en la EM \cite{Kocevar2016,Muthuraman2016} y las posibles mejoras que se pueden realizar sobre estas primeras herramientas parecen abrir la puerta al estudio de la conectómica humana y su aplicación clinica.
 
 \subsection{Limitaciones}
 
-\begin{list}{-}
-\item El bajo tesla --> ruido en imagen
-\item La elección de un tipo de particiones
-\item La selección de pacientes
-\item el limitado numero de pacientes
-\item La falta de varios puntos en el tiempo en el mismo paciente para observar la variabilidad
-\item Faltaría el MSFC (Multiple Sclerosis Functional Composite)
-\end{list}
+Desde el punto de vista metodológico, el estudio presenta diversas limitaciones. La topología de la red en base a las pariticiones de Diez et al puede no mejorar los resultados. La dependencia de las redes a la forma en la que estas se han generado, es actualmente un debate abierto \cite{Zalesky2010}. 
 
-Desde el punto de vista metodológico, el estudio de Kocevar et al. \cite{Kocevar2016} puede sufrir varias limitaciones. La primera consiste en la elección arbitraria del método de parcelación para la definición de los nodos de los grafos. De hecho, los parámetros de la red están influenciados por la el número de nodos de la red \cite{Zalesky2010}. Esta limitación técnica es la que motiva  de este estudio., el cual se realiza una comparación del mismo método de clasificación pero con el método de parcelación basado en las parcelaciones estructuro-funcionales.
-
-
-\subsection{Impacto esperado}
+Varias limitaciones del estudio son debidas al uso de la resonancia magnética nuclear. El bajo tesla del escáner (1.5$T$) puede contribuir a la variabilidad de las mediciones. Las IRMN tiene cierta variabilidad intrínseca con el mismo paciente, en la misma fecha, es por ello que se aconseja el uso del multiples capturas y trabajar con la media de ellas \cite{Landman2007}.
 
 \subsection{Aspectos éticos}
-Paso un comite de etica en su momento, descubrir que se debatio, que mas se podría debatir
+
+Los principios éticos aceptados en investigación biomédica con seres humanos regirán este estudio. La fuente de la cual se obtendrán los datos fueron en el momento de su adquisición aprobados por el comité de ética local (CPP Sud-Est IV) y la agencia nacional francesa de medicina y productos sanitarios (ANSM). Se obtuvo el consentimiento informado por escrito de todos los sujetos.
+
+La confidencialidad de los participantes y de sus datos será respetada en todo momento, y por ello se trabajará con datos anonimizados desde la fuente. Debido a la sensibilidad de los datos con los que se trabaja y las posibles futuras connotaciones que pudieran tener, se trabajará en obtener nuevamente un consentimiento informado de los paciente permitiendo la reutilización de sus datos con fines científicos.
 
 
 %------------------------------------------------
 \phantomsection
 \section*{Agradecimientos}
 \addcontentsline{toc}{section}{Agradecimientos}
-Gracias a Amaia Lasa por su infinita paciencia y ayuda a simplificar ciertos aspectos del trabajo. A Eloi Martinez y Sara Llufriu, por acogerme en el IDIBAPS. Finalmente gracias Álvaro y Javier, por creer en esta aventura y uniros a ella.
-
+Gracias a Amaia Lasa por su infinita paciencia y ayuda a simplificar ciertos aspectos del trabajo. A Eloi Martinez y Sara Llufriu, por ayudarme a trabajar en el IDIBAPS. Finalmente gracias Álvaro Abella y Javier de Oca, por creer en esta aventura y uniros a ella.
 \endgroup
 
 
