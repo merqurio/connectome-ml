@@ -42,15 +42,13 @@ Humans [D006801]
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 \Abstract{ 
-La necesidad de desarrollar nuevos marcadores para la esclerosis multiple (EM) ha empujado a la búsqueda de métodos alternativos para medir la afectación de la enfermedad sobre la materia blanca (MB). La conectómica, que estudia la conectividad cerebral como si de una red o grafo se tratara, está aportando nuevos marcadores, demostrando una correlación entre la afectación de la red y la afectación de la EM. Actualmente los conectomas están demostrando su posible potencial en la clasificación temprana de los pacientes a los diferentes fenotipos EM o paciente sano. El objetivo de este estudio es comparar el método de clasificación de pacientes con EM propuesto por Kocevar et al. con una variente donde las particiones cerebrales utilizadas para la creación del conectoma están basadas en la parcelación estructuro-funcional del cerebro. Para ello se reutilizarán los datos de Kocevar et al. (67 pacientes y 26 controles) y se compararán la sensibilidad y especificidad entre estos dos métodos de clasificación de pacientes.
+La necesidad de desarrollar nuevos marcadores para la esclerosis multiple (EM) ha empujado a la búsqueda de métodos alternativos para medir la afectación de la enfermedad sobre la materia blanca (MB). La conectómica, que estudia la conectividad cerebral como si de una red o grafo se tratara, está aportando nuevos marcadores, demostrando una correlación entre la afectación de la red y la afectación de la EM. Actualmente los conectomas están revelando su posible potencial en la clasificación temprana de los pacientes a los diferentes fenotipos EM o paciente sano. El objetivo de este estudio es comparar el método de clasificación de pacientes con EM propuesto por Kocevar et al. con una variente del mismo donde las particiones cerebrales utilizadas para la creación del conectoma están basadas en la parcelación estructuro-funcional del cerebro. Para ello se reutilizarán los datos de Kocevar et al. (67 pacientes y 26 controles) y se comparará la sensibilidad y especificidad entre estos dos métodos de clasificación de pacientes.
  
 ~}
 
 \AbstractEng{
-The need to develop new markers for multiple sclerosis (MS) has led to the search for alternative methods to measure disease involvement on white matter (WM). Connectivism, which studies brain connectivity as if it were a network or graph, is contributing new markers, demonstrating a correlation between the network's involvement and the involvement of MS. Currently connectomas are demonstrating their potential in the early classification of patients to different MS or healthy patient phenotypes. The objective of this study is to compare the method of classification of MS patients proposed by Kocevar et al. With a variant where the brain partitions used for the creation of the connectam are based on the structural-functional splitting of the brain. For this purpose, data from Kocevar et al. (67 patients and 26 controls) and will compare the sensitivity and specificity between these two methods of classifying patients.
+The need to develop new markers for multiple sclerosis (MS) has led to the research of alternative methods to measure the damage on the white matter (WM). Connectomics, the study of the brain as a graph of connections, is contributing new markers, revealing correlations between the network's damage and the stage of the MS. Currently connectomes are demonstrating their potential in the early classification of subjects to the different phenotypes of MS or healthy control. The main objective of this study is to compare the classification method proposed by Kocevar et al. with a variant of itself where the brain partitions used for the creation of the connectomes are based on structure-functional modules of the brain. The data collected by Kocevar et al. (67 patients and 26 controls) will be reused and compared with the new method, testing the sensitivity and specificity of both tests.
 ~}
-% TODO: Mejorar abstract
-% quitar toda la parte de como se generan y añadir la parte de rehacer comparando con otros datos
 
 %----------------------------------------------------------------------------------------
 
@@ -298,7 +296,7 @@ Se excluirá a los participantes que:
 
 \subsection{Instrumentos de recolección de datos}
 
-Los datos que se han de obtener para poder comparar ambos tests son por un lado las medidas que describen el grafo de la red neuronal y por el otro lado el diagnóstico de EM establecido. El primer paso es capturar las IRMN de los sujetos, generar un conectoma, y analizarlo como un grafo, obteniendo del grafo los valores de medición que lo describen matemáticamente. Por otra parte los pacientes obtendrán un diagnóstico clínico que será el que sirva de referencia para realizar la clasificación.
+Los datos que se han de obtener para poder comparar ambos tests son por un lado las medidas que describen el grafo de la red neuronal y por el otro lado el diagnóstico de EM establecido por el clínico. El primer paso es capturar las IRMN de los sujetos, generar un conectoma, y analizarlo como un grafo, obteniendo del grafo los valores de medición que lo describen matemáticamente. Por otra parte los pacientes obtendrán un diagnóstico clínico que será el que sirva de referencia para realizar la clasificación.
 
 \begin{figure}[h]
 	\centering
@@ -316,7 +314,7 @@ Tras la adquisición, el procesamiento de la imágenes se realizará con el soft
 Se pueden estimar varias métricas para medir las propiedades de grafo generado, para ello nos basaremos en aquellas propuestas por Rubinov et al.\cite{Rubinov2010}. Esta última operación se realizará con el paquete de análisis NetworkX \cite{Daducci2012} para obtener las medidas de segregación, integración, centralidad, resistencia y motif.
 
 
-Para el diagnóstico y el fenotipado de los pacientes, nos basaremos en los datos recolectados por los clínicos. Estos utilizaron los criterios revisados de McDonald \cite{Mcdonald2001, Polman2011}, criterios basados tanto en la clínica de los pacientes así como en la observación de lesiones por un radiólogo en secuencia $T_2$ en la IRMN \{fig.\ref{fig:mcdonald}\}.  Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. El EDSS de un sistema de puntuación que valora diversos aspecto del paciente y asigna al paciente un resultado dentro de una escala semicuantitativa discreta \{fig.\ref{fig:edss}\}.
+Para el diagnóstico y el fenotipado de los pacientes, nos basaremos en los datos recolectados por los clínicos. Estos utilizaron los criterios revisados de McDonald \cite{Mcdonald2001, Polman2011}, criterios basados tanto en la clínica de los pacientes así como en la observación de lesiones por un radiólogo en secuencia $T_2$ en la IRMN. La \{fig.\ref{fig:mcdonald}\} expone un esquema simplificado de estos criterios.  Para evaluar la discapacidad derivada de las lesiones de la EM, se utilizó la escala de EDSS \cite{Kurtzke1983}. El EDSS es un sistema de puntuación que valora diversos aspecto clínicos del paciente y asigna a este un resultado dentro de una escala semicuantitativa discreta \{fig.\ref{fig:edss}\}.
 
 \begin{figure}[b]
 	\centering
@@ -336,16 +334,16 @@ Para el diagnóstico y el fenotipado de los pacientes, nos basaremos en los dato
 
 \subsection{Variables finales}
 
-Las variables de finales para cada paciente son el diagnóstico de EM y las 5 mediciones que describen el grafo, formando un total de 6 variables. El diagnóstico se trata de una variable cualitativa con 5 posibles casos, paciente sano (HC), clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP). Las 5 mediciones que describen el grafo se tratan de 5 variables cuantitativas continuas.
+Las variables finales para cada paciente son el diagnóstico de EM y las 5 mediciones que describen el grafo, formando un total de 6 variables. El diagnóstico se trata de una variable cualitativa con 5 posibles casos, paciente sano (HC), clínicamente aislada (CIS), remitente-recurrente (RR), progresiva primaria (PP) y secundariamente progresiva (SP). Las 5 mediciones que describen el grafo se tratan de 5 variables cuantitativas continuas.
 
 \subsection{Análisis estadístico}
 Tras obtener las métricas que describen la red, estas pasarán junto con el diagnóstico clínico por un algoritmo de aprendizaje automatizado. Este algoritmo aprenderá a clasificar a los sujetos en una de las categorías de la esclerosis múltiple o paciente sano en base a estas métricas. En este caso el algoritmo utilizado es la máquina de vectores de soporte (SVM).
 
-Con los resultados obtenidos a partir de este algoritmo y con la clasificación previa realizada por los clínicos, crearemos una matriz de confusión \ref{table:matriz} a partir de la cual se podrá calcular la sensibilidad y especificidad de estos tests. Repetiremos esta operación en dos ocasiones, una con la particiones aleatorias de Kocevar et al. y otra con las particiones de Diez et al. De esta manera obtendremos, la sensibilidad y especificidad para las dos herramientas de clasificación, pudiendo así compararlas entre sí. 
+Con los resultados obtenidos a partir de este algoritmo y con la clasificación previa realizada por los clínicos, crearemos una matriz de confusión. A partir de esta matriz se podrá calcular la sensibilidad y especificidad de estos tests comparada con los criterios de McDonald. Repetiremos esta operación en dos ocasiones, una con la particiones aleatorias de Kocevar et al. y otra con las particiones de Diez et al. De esta manera obtendremos, la sensibilidad y especificidad para las dos herramientas de clasificación, respecto a los criterios de McDonald, pudiendo así compararlas entre sí. 
 
 \begin{table}[h]
 \centering
-\label{matriz}
+\label{table:matriz}
 \begin{tabular}{rlllll}
 \multicolumn{1}{l}{\textbf{}}                       & \multicolumn{5}{l}{\textbf{Valor predecido:}}            \\
 \multicolumn{1}{l}{\textbf{Valor
@@ -365,7 +363,7 @@ En base a la especificidad y sensibilidad obtenida para los dos test de clasific
 
 \subsection{Cronograma}
 
-La duración aproximada para la realización de este estudio es de 11 meses. Debido a la complejidad de los datos a estudio es importante determinar el máximo numero de parámetros, para minimizar el efecto la variabilidad debida al azar y la correcta preparación de las herramientas con las que se llevarán a cabo el análisis. En el siguiente cronograma, \{fig.\ref{fig:gantt}\} en la página  \pageref{fig:gantt} se resumen las actividades a realizar durante este periodo de tiempo.
+La duración aproximada para la realización de este estudio es de 11 meses. Debido a la complejidad de los datos a estudio es importante determinar el máximo numero de parámetros, para minimizar la variabilidad debida al azar y la correcta preparación de las herramientas con las que se llevarán a cabo el análisis. En el siguiente cronograma, \{fig.\ref{fig:gantt}\} en la página  \pageref{fig:gantt}, se resumen las actividades a realizar durante este periodo de tiempo.
 
 \begin{figure}[t]
 	\centering
@@ -378,7 +376,7 @@ La duración aproximada para la realización de este estudio es de 11 meses. Deb
 %------------------------------------------------
 \section{Discusión}
 
-La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico y pronóstico de distintos trastornos neurológicos. Las nuevas capacidades técnicas de explorar la estimación de las redes neuronales están suponiendo un avance en la búsqueda de nuevos marcadores no invasivos \cite{Tymofiyeva2017,Fornito2015,Sun2016}.
+La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico y pronóstico de distintos trastornos neurológicos. Las nuevas capacidades técnicas de explorar la estimación de las redes neuronales están suponiendo un avance en la búsqueda de nuevos marcadores no invasivos en las enfermedades neurológicas \cite{Tymofiyeva2017,Fornito2015,Sun2016}.
 
 Los primeros resultados satisfactorios en la aplicación de estos avances en en la EM \cite{Kocevar2016,Muthuraman2016} y las posibles mejoras que se pueden realizar sobre estas primeras herramientas parecen abrir la puerta al estudio de la conectómica humana y su aplicación clinica.
 
@@ -390,9 +388,9 @@ Varias limitaciones del estudio son debidas al uso de la resonancia magnética n
 
 \subsection{Aspectos éticos}
 
-Los principios éticos aceptados en investigación biomédica con seres humanos regirán este estudio. La fuente de la cual se obtendrán los datos fueron en el momento de su adquisición aprobados por el comité de ética local (CPP Sud-Est IV) y la agencia nacional francesa de medicina y productos sanitarios (ANSM). Se obtuvo el consentimiento informado por escrito de todos los sujetos.
+Los principios éticos aceptados en la investigación biomédica con seres humanos regirán este estudio. La fuente de la cual se obtendrán los datos fueron en el momento de su adquisición aprobados por el comité de ética local (CPP Sud-Est IV) y la agencia nacional francesa de medicina y productos sanitarios (ANSM). Se obtuvo el consentimiento informado por escrito de todos los sujetos.
 
-La confidencialidad de los participantes y de sus datos será respetada en todo momento, y por ello se trabajará con datos anonimizados desde la fuente. Debido a la sensibilidad de los datos con los que se trabaja y las posibles futuras connotaciones que pudieran tener, se trabajará en obtener nuevamente un consentimiento informado de los paciente permitiendo la reutilización de sus datos con fines científicos.
+La confidencialidad de los participantes y de sus datos será respetada en todo momento, y por ello se trabajará con datos anonimizados desde la fuente. Debido a la sensibilidad de los datos con los que se trabaja y las posibles futuras connotaciones que pudieran tener, se trabajará para obtener nuevamente un consentimiento informado de los paciente permitiendo la reutilización de sus datos con fines científicos.
 
 
 %------------------------------------------------

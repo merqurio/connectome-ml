@@ -145,10 +145,9 @@ justification=raggedright
 		\linespread{1.3}
 		\sffamily\textbf{\abstractname}\\\@Abstract\\[4pt]%
 		\ifdefined\@AbstractEng
-			\vskip20pt%
 			\sffamily\textbf{\abstractnameEng}\\\@AbstractEng\\[4pt]%
 		\fi
-		\vskip20pt%
+		\vskip4pt%
 		\textbf{\keywordname}\\\@Keywords%
 	}
 }
