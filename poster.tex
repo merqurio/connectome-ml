@@ -1,0 +1,92 @@
+% Avilable colors
+% UIClightpurple, UICdarkpurple, UICpurple, UICblueceleste, UIClightblue, UICskyblue, UICbrightblue, UICnavyblue, UICdarkblue, UICdarkgreen, UICmidgreen, UICbrightgreen, UIClightgreen, UICstone, UICdarkgrey, UICdarkbrown, UICdarkred, UICburgundy, UICpink, UICrichred, UICmidred, UICorange, UICyellow, UICwhite, UICblack
+
+\documentclass[
+		portrait, %landscape
+		size=a1paper, % a0paper, a1paper, a4paper
+		color=UICblack,
+		margin=3cm,
+		bannerheight=11cm
+]{uicposter}
+\usepackage[spanish]{babel} % english
+
+\title{El uso de conectomas basados en particiones estructuro-funcionales del cerebro para la clasificación automatizada de subtipos de esclerosis múltiple.}
+
+\author[1 *]{Gabriel de Maeztu}
+\affil[1]{Universitat Internacional de Catalunya}
+\affil[*]{gabriel.maeztu@gmail.com}
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols}{2}
+
+\section*{Introducción}
+
+La necesidad de desarrollar nuevos marcadores para la esclerosis multiple (EM) ha empujado a la búsqueda de métodos alternativos para medir la afectación de la enfermedad sobre la materia blanca (MB)  \cite{Rio2017}. La conectómica, que estudia la conectividad cerebral como si de una red o grafo se tratara \cite{Bullmore2009}, está aportando nuevos marcadores, demostrando una correlación entre la afectación de la red y la afectación de la EM en el paciente \cite{Richiardi2012}. Actualmente los conectomas están revelando su potencial en la clasificación temprana de los pacientes a los diferentes fenotipos EM o paciente sano \cite{Kocevar2016}.
+
+\begin{center}
+	\includegraphics[width=.7\linewidth]{img/streams}		
+\end{center}
+\begin{small}
+	– Procesado de los imágenes para obtener el grafo.
+\end{small}
+
+
+\section*{Objetivo del estudio}
+El objetivo de este estudio es comparar la sensibilidad y la especificidad de dos métodos de clasificación diagnóstica de pacientes con EM; el método propuesto por Kocevar et al.\cite{Kocevar2016} y una variante del mismo que hará uso de las particiones anatómico-funcionales del cerebro descritas por Diez et al.\cite{Diez2015}. 
+
+\section*{Justificación}
+El modo en el que se estudia la conectividad de una red está supeditado a la topología de la misma \cite{Zalesky2010}. El uso de conectomas creados en base a modelos de particiones cerebrales que responden a la funcionalidad y estructura del mismo puede que mejoren la sensibilidad y especificidad de este método diagnóstico.
+
+\section*{Hipotesis}
+\begin{highlightbox}[UICskyblue!15!white]
+	\begin{equation*}
+	    1, Hipotesis=
+	  \begin{cases}
+	      H_0: Sensibilidad_1 = Sensibilidad_2 \\
+	      H_1: Sensibilidad_1 \neq Sensibilidad_2
+	  \end{cases}
+	\end{equation*}
+	\begin{equation*}
+	    2, Hipotesis=
+	  \begin{cases}
+		 H_0: Especificidad_1 = Especificidad_2\\
+		 H_1: Especificidad_1 \neq Especificidad_2
+	  \end{cases}
+	\end{equation*}
+\end{highlightbox}
+
+\section*{Material y metodos}
+
+\subsection*{Diseño del estudio}
+Se trata de un studio observacional, analítico, transversal. Hace uso de datos secundarios obtenidos de la base de datos abierta desarrollada previamente en el Hospital de Lyon entre 2014 y 2015 y aprobada por el comité ético CPP Sud-Est IV.
+
+\subsection*{Sujetos}
+67 pacientes con EM (12 clínicamente aislada, 24 remitente-recurrente, 24 progresiva primaria y 17 secundariamente progresiva) y 26 controles.
+
+\subsection*{Datos y variables del estudio}
+Se partirá de las imágenes por resonancia magnética nuclear (IRMN) en secuencias sagital 3D $T_1$ y secuencias $DTI$ axial de spin-echo 2D. A partir de las IRMN se obtendrán los conectomas y redes haciendo uso de FSL y MRtrix. La red se estudiará con NetworkX para obtener las variables que la describen: segregación, integración, centralidad, resistencia y motif. 
+
+\includegraphics[width=\linewidth]{img/procesado}
+\begin{small}
+	– Diferencia en el procesado de las imágenes.
+\end{small}
+
+
+Estas cinco variables junto con el diagnóstico clínico en base a los criterios revisados de McDonald \cite{Polman2011} se utilizarán para entrenar un algoritmo de aprendizaje automatizado \textit{(Support Vector Machines)} que será el responsable de clasificar a los pacientes en los subtipos de EM o paciente sano. Con la matríz de confusión resultante se calculará la sensibilidad y especificidad y se comparará con el otro grupo de análisis. Se utilizará la prueba de McNemar de datos pareados como test estadístico entre ambas pruebas diagnósticas.
+
+
+\section*{Discusión}
+La combinación de la teoría de grafos y la naturaleza predictiva del aprendizaje automatizado está abriendo nuevas posibilidades para el diagnóstico, pronóstico y manejo de distintos trastornos neurológico como la EM.
+
+\subsection*{Limitaciones}
+ El bajo tesla del escáner (1.5$T$) puede contribuir a la variabilidad de las mediciones. Las IRMN tiene cierta variabilidad intrínseca con el mismo paciente, en la misma fecha, es por ello que se aconseja el uso del multiples capturas y trabajar con la media de ellas. Las mediciones son indirectas y basadas en estimaciones.
+
+\bibliographystyle{myunsrt}
+\small\bibliography{references}
+
+\end{multicols}
+
+\end{document}
